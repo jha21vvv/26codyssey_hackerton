@@ -1,0 +1,52 @@
+GPU 서버(`inno-gpu-026`)에 접속한 뒤 아래 순서로 실행합니다.
+
+**접속과 환경 준비 (처음 한 번, 접속할 때마다)**
+```bash
+ssh -p 2222 ncloud@10.19.235.127
+```
+```bash
+cd ~/smishing/judge && . ../.venv/bin/activate
+```
+```bash
+SP=$(python -c "import site;print(site.getsitepackages()[0])") && export LD_LIBRARY_PATH=$(ls -d "$SP"/nvidia/*/lib | tr '\n' ':')${LD_LIBRARY_PATH:-}
+```
+마지막 줄은 음성 전사에만 필요합니다(cuDNN/cuBLAS 경로 설정). 문자만 판정하면 생략해도 됩니다. 접속 후 `echo $HOSTNAME`이 `inno-gpu-026`인지 먼저 확인하세요.
+
+**1. RAG 판정 (검색 + LLM, 권장)**
+
+통화 음성:
+```bash
+python judge_rag.py samples/testervoice.m4a
+```
+문자 한 통(텍스트 파일에 넣어서):
+```bash
+printf '[국제발신] 택배 주소 불일치로 반송 예정, 확인: http://bit.ly/ab12' > /tmp/sms.txt && python judge_rag.py /tmp/sms.txt --sms
+```
+옵션: `--llm claude-haiku-4`(판정 모델), `--k 3`(검색할 유사 사례 수). 여러 파일은 한 번에 나열하면 됩니다.
+
+**2. BERT 판정 (빠르고 LLM 호출 없음)**
+```bash
+python judge.py samples/testervoice.m4a --model base
+```
+```bash
+python judge.py /tmp/sms.txt --sms --model large
+```
+`--model`은 `base`(빠름) 또는 `large`(정확도 우선)입니다.
+
+**3. 전사만 따로 (large-v3)**
+```bash
+python ../model/bench_stt.py out_large large-v3 cuda float16 4 samples/testervoice.m4a
+```
+결과는 `~/smishing/data/derived/bench/out_large.txt`에 저장됩니다.
+
+**알아 둘 점**
+- 음성은 확장자가 `.m4a .mp3 .wav .mp4`이면 자동으로 전사한 뒤 판정합니다. 텍스트는 `.txt`로 넘기면 됩니다.
+- `judge_rag.py`는 처음 실행에 모델을 불러오느라 시간이 조금 더 걸립니다. 10분 통화 기준 약 1분 20초였습니다.
+- 출력 첫 줄에 나오는 "unauthenticated requests to the HF Hub" 경고는 무시해도 됩니다.
+- RAG 판정은 게이트웨이를 쓰므로 `judge/.env`의 키가 필요합니다. 키가 없거나 한도를 넘으면 "판정 불가"가 나옵니다.
+
+노트북에서 서버로 들어가지 않고 한 줄로 실행하려면 이렇게 합니다.
+```bash
+wsl -e ssh -p 2222 ncloud@10.19.235.127 'cd ~/smishing/judge && . ../.venv/bin/activate && python judge_rag.py samples/testervoice.m4a'
+```
+이 방식은 음성 전사 때 위의 `LD_LIBRARY_PATH` 설정이 빠져서 실패할 수 있습니다. 음성이면 앞의 접속 방식으로 하세요.
