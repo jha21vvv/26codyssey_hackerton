@@ -1,0 +1,1297 @@
+[
+ {
+  "id": "inc-MOB-BEN-074#0:benign",
+  "y": 0,
+  "text": "고객님, 금월 데이터 사용량이 기본 제공량을 초과하여 추가 요금이 발생될 예정입니다. 잔여 데이터 및 요금 명세서는 공식 앱에서 확인해 주시기 바랍니다. https://mobile-info.check.example/usage",
+  "shots": [
+   {
+    "text": "[안내] 고객님, 금월 데이터 사용량이 기본 제공량을 초과하여 추가 과금이 발생할 예정입니다. 요금폭탄 방지를 위해 즉시 요금제 확인 및 조정을 권고드립니다. 상세내역 확인: https://mobile-billing.check-info.example",
+    "label": 1,
+    "sim": 0.9202226400375366
+   },
+   {
+    "text": "고객님, 금월 데이터 사용량이 초과되어 추가 요금이 발생할 수 있습니다. 미납 방지를 위해 잔여 요금 및 상세 내역을 확인하십시오. https://t-world-bill.check-status.example",
+    "label": 1,
+    "sim": 0.9151536226272583
+   },
+   {
+    "text": "고객님, 이번 달 데이터 사용량이 초과되었습니다. 미확인 시 추가 과금 및 회선 제한이 발생할 수 있습니다. 청구 내역 확인: https://mobile-verify.telecom-bill.example/v",
+    "label": 1,
+    "sim": 0.8794574737548828
+   },
+   {
+    "text": "고객님, 금월 데이터 사용량이 초과되어 추가 요금이 발생할 예정입니다. 요금 명세서 확인 및 데이터 안심옵션 신청은 아래 링크를 확인해 주세요. http://telecom-bill-check.example",
+    "label": 0,
+    "sim": 0.9175647497177124
+   },
+   {
+    "text": "고객님, 10월분 데이터 이용량이 초과되어 추가 요금이 발생할 예정입니다. 상세 내역 및 요금제 변경은 공식 홈페이지(mobile-info.example/bill)에서 확인해 주세요.",
+    "label": 0,
+    "sim": 0.8935384750366211
+   },
+   {
+    "text": "[안내] 고객님, 이번 달 데이터 기본 제공량이 초과되어 추가 과금이 발생할 예정입니다. 요금 폭탄 방지를 위해 즉시 요금제 변경 또는 잔여 데이터 확인이 필요합니다. 상세 확인: https://mobile-verify.plan-check.example/auth",
+    "label": 0,
+    "sim": 0.8893330097198486
+   }
+  ]
+ },
+ {
+  "id": "inc-MOB-BEN-013#0:benign",
+  "y": 0,
+  "text": "[금융안내] 고객님, 원활한 금융 서비스 이용을 위해 필수 보안 업데이트가 필요합니다. 미업데이트 시 앱 이용이 제한될 수 있습니다. 업데이트 확인: https://update.financial-service.example",
+  "shots": [
+   {
+    "text": "[보안통지] 고객님의 금융 서비스 이용 제한 안내. 최신 보안 패치가 적용되지 않은 기기로 확인되었습니다. 즉시 업데이트가 필요합니다. 확인: https://security-patch.secure-update.example/v2",
+    "label": 1,
+    "sim": 0.9088619947433472
+   },
+   {
+    "text": "[안내] 고객님, 금월 데이터 사용량이 기본 제공량을 초과하여 추가 과금이 발생할 예정입니다. 요금폭탄 방지를 위해 즉시 요금제 확인 및 조정을 권고드립니다. 상세내역 확인: https://mobile-billing.check-info.example",
+    "label": 1,
+    "sim": 0.8706612586975098
+   },
+   {
+    "text": "[계정안내] 회원님의 계정이 새로운 환경에서 로그인되었습니다. 본인이 아닐 경우 아래 링크를 통해 계정 보호 조치를 진행해 주세요. 24시간 내 미조치 시 계정이 영구 정지될 수 있습니다. https://account-protect.safe-check.example/auth",
+    "label": 1,
+    "sim": 0.8663303256034851
+   },
+   {
+    "text": "[금융안내] 사용 중이신 뱅킹 앱의 보안 업데이트가 필요합니다. 미업데이트 시 서비스 이용이 제한될 수 있습니다. 공식 홈페이지(https://security.update-check.example)에서 확인하세요.",
+    "label": 0,
+    "sim": 0.9373842477798462
+   },
+   {
+    "text": "고객님, 최신 금융 보안 정책에 따라 앱 업데이트가 필요합니다. 미업데이트 시 당일 24시부터 뱅킹 서비스 이용이 제한됩니다. 확인: https://safety-bank.update-check.example/v2",
+    "label": 0,
+    "sim": 0.9318926334381104
+   },
+   {
+    "text": "[금융보안] 필수 보안 업데이트 안내: 최근 급증하는 금융 사기 방지를 위해 이용 중이신 금융 앱의 최신 보안 패치가 출시되었습니다. 미업데이트 시 서비스 이용이 제한될 수 있습니다. 설치: https://safe-update.secure-bank.example/v2",
+    "label": 0,
+    "sim": 0.9268878102302551
+   }
+  ]
+ },
+ {
+  "id": "inc-MOB-BEN-103#0:benign",
+  "y": 0,
+  "text": "[금융안내] 고객님의 공동인증서 만료가 3일 남았습니다. 만료 시 모든 비대면 금융거래가 제한되오니 아래 공식 홈페이지에서 갱신하시기 바랍니다. https://bank-secure.cert-update.example",
+  "shots": [
+   {
+    "text": "공동인증서 만료 안내: 고객님의 공동인증서 만료가 금일 24시 예정입니다. 만료 시 금융거래 및 공공기관 이용이 제한되오니 즉시 갱신하시기 바랍니다. 갱신하기: http://k-gov.auth-update.example/cert",
+    "label": 1,
+    "sim": 0.9144836664199829
+   },
+   {
+    "text": "[보안통지] 고객님의 금융 서비스 이용 제한 안내. 최신 보안 패치가 적용되지 않은 기기로 확인되었습니다. 즉시 업데이트가 필요합니다. 확인: https://security-patch.secure-update.example/v2",
+    "label": 1,
+    "sim": 0.8756444454193115
+   },
+   {
+    "text": "고객님, 계정 내 타지역 로그인 시도가 감지되어 보안을 위해 계정이 일시 잠금되었습니다. 24시간 내 본인확인이 없을 시 계정이 영구 정지됩니다. 해제: https://account-secure-check.example",
+    "label": 1,
+    "sim": 0.8705243468284607
+   },
+   {
+    "text": "고객님, 공동인증서 만료가 오늘 24시 임박하였습니다. 갱신하지 않을 경우 내일부터 모든 금융거래가 중단됩니다. 즉시 갱신: https://cert-renew.update-service.example/login",
+    "label": 0,
+    "sim": 0.9291273355484009
+   },
+   {
+    "text": "[금융기관] 고객님의 공동인증서가 금일 만료될 예정입니다. 만료 시 금융거래가 제한되오니 아래 링크를 통해 갱신하시기 바랍니다. https://kb-auth.security-verify.example/renew",
+    "label": 0,
+    "sim": 0.9256894588470459
+   },
+   {
+    "text": "[보안통지] 고객님의 공동인증서가 오늘 만료 예정입니다. 만료 시 모든 금융거래가 제한되오니 즉시 갱신바랍니다. 확인: https://cert-update.auth-center.example/manage",
+    "label": 0,
+    "sim": 0.924035370349884
+   }
+  ]
+ },
+ {
+  "id": "inc-MOB-BEN-019#0:benign",
+  "y": 0,
+  "text": "[결제승인] 귀하의 카드가 03/04 17:15 842,000원 결제되었습니다. 본인 요청이 아닐 경우 즉시 확인 바랍니다. 확인: https://official-card-portal.example",
+  "shots": [
+   {
+    "text": "안찾아가신금액있어요서둘러확인해주세요lD ***********PW ****gⓞⓛo-⑧⑤⑧.com",
+    "label": 1,
+    "sim": 0.8743875026702881
+   },
+   {
+    "text": "상품이 배송되었습니다. 자세한 내용을 보려면 아래 URL을 클릭하세요.\nhttp://tinyurl.com/y7fec8o3",
+    "label": 1,
+    "sim": 0.8727738857269287
+   },
+   {
+    "text": "고객님 주문하신물품 주소잘못확인되어\n확인/부탁드립니다 https://tinyurl.com/\nyhqcbym2",
+    "label": 1,
+    "sim": 0.8726345300674438
+   },
+   {
+    "text": "[카드사] 12/22 16:53 (0000)님 카드 458,000원 승인완료. 본인 이용 아닐 시 고객센터(1588-xxxx)로 즉시 문의 바랍니다.",
+    "label": 0,
+    "sim": 0.886178731918335
+   },
+   {
+    "text": "[알림] 02/16 12:34 카드 승인 48,200원(일시불). 본인 요청이 아닐 경우 고객센터(1588-xxxx)로 문의하시거나 당사 홈페이지에서 확인 바랍니다.",
+    "label": 0,
+    "sim": 0.8834395408630371
+   },
+   {
+    "text": "[결제알림] 2025-12-22 14:45 고객님 명의로 48,500원(가전) 승인완료. 본인 아닐 시 즉시 확인: https://m.service-portal.example/pay-check",
+    "label": 0,
+    "sim": 0.882477343082428
+   }
+  ]
+ },
+ {
+  "id": "inc-MOB-BEN-094#0:benign",
+  "y": 0,
+  "text": "고객님, 금융 보안 정책에 따라 금융앱의 필수 업데이트가 필요합니다. 안전한 이용을 위해 공식 스토어를 통해 업데이트를 완료해 주시기 바랍니다. 상세내용: https://portal.service-official.example/updates",
+  "shots": [
+   {
+    "text": "[보안통지] 고객님의 금융 서비스 이용 제한 안내. 최신 보안 패치가 적용되지 않은 기기로 확인되었습니다. 즉시 업데이트가 필요합니다. 확인: https://security-patch.secure-update.example/v2",
+    "label": 1,
+    "sim": 0.8866517543792725
+   },
+   {
+    "text": "업데이트!미친배당 대참사!https://dooo.us/spo**항상감사합니다*년㈜안전",
+    "label": 1,
+    "sim": 0.8572880029678345
+   },
+   {
+    "text": "[KuCoin] 보안센터! kucoinne.com  으로 이동하여 보안 업그레이드를 완료하세요.",
+    "label": 1,
+    "sim": 0.8548385500907898
+   },
+   {
+    "text": "[금융안내] 사용 중이신 뱅킹 앱의 보안 업데이트가 필요합니다. 미업데이트 시 서비스 이용이 제한될 수 있습니다. 공식 홈페이지(https://security.update-check.example)에서 확인하세요.",
+    "label": 0,
+    "sim": 0.8989598751068115
+   },
+   {
+    "text": "[금융보안] 필수 보안 업데이트 안내: 최근 급증하는 금융 사기 방지를 위해 이용 중이신 금융 앱의 최신 보안 패치가 출시되었습니다. 미업데이트 시 서비스 이용이 제한될 수 있습니다. 설치: https://safe-update.secure-bank.example/v2",
+    "label": 0,
+    "sim": 0.898804247379303
+   },
+   {
+    "text": "고객님, 최신 금융 보안 정책에 따라 앱 업데이트가 필요합니다. 미업데이트 시 당일 24시부터 뱅킹 서비스 이용이 제한됩니다. 확인: https://safety-bank.update-check.example/v2",
+    "label": 0,
+    "sim": 0.8911892175674438
+   }
+  ]
+ },
+ {
+  "id": "inc-MOB-BEN-105#0:benign",
+  "y": 0,
+  "text": "아빠 나 폰 액정 깨져서 수리 맡겼어. 급하게 송금할 곳 있는데 이 번호로 연락줘. 확인하면 여기로 답장 부탁해.",
+  "shots": [
+   {
+    "text": "아빠, 나 핸드폰 액정 깨져서 AS 맡겼어. 지금 급하게 송금할 게 있는데 이 번호로 연락 좀 줘. http://k-gov.refund-check.example/urgent",
+    "label": 1,
+    "sim": 0.9224591255187988
+   },
+   {
+    "text": "아빠 나 폰 액정깨져서\n수리맡기고 임시 이번호\n사용중이야 확인하면\n문자줘~\n\n통화하다가 떨어뜨렸지\nㅠㅠ\n폰은 수리땜에 늦으면\n내일쯤 찾을수 있대 엄마\n많이바빠?",
+    "label": 1,
+    "sim": 0.9144159555435181
+   },
+   {
+    "text": "엄마 난데 폰 떨어뜨렸어ㅠㅠ액정이깨져서 수리맡겼어. 이번호는 피시용이라 문자만 가능해 여기로 문자 줘",
+    "label": 1,
+    "sim": 0.9107523560523987
+   },
+   {
+    "text": "아빠 나 핸드폰 액정 깨져서 수리 맡겼어. 지금 급하게 송금할 데가 있는데 대신 좀 해줄 수 있어? 확인하면 답장 줘.",
+    "label": 0,
+    "sim": 0.9283440709114075
+   },
+   {
+    "text": "아빠, 나 폰 액정 깨져서 수리 맡겼어. 급하게 결제할 게 있는데 이 번호로 연락 줘. 확인하면 여기 링크 눌러서 톡 줘. https://family-support.portal.example/chat",
+    "label": 0,
+    "sim": 0.9231870174407959
+   },
+   {
+    "text": "엄마 나 폰 액정 깨져서 수리 맡겼어. 지금 급하게 송금해야 할 데가 있는데 대신 좀 해줄 수 있어? 확인하면 이 링크로 톡 줘. http://family-care.urgent-help.example/chat",
+    "label": 0,
+    "sim": 0.920178234577179
+   }
+  ]
+ },
+ {
+  "id": "inc-MOB-BEN-030#0:benign",
+  "y": 0,
+  "text": "[국세청] 2026년 3기 부가가치세 미납 안내. 납부기한: 10/25. 상세내역 확인: https://hometax.gov-service.example/pay",
+  "shots": [
+   {
+    "text": "[국세청] 2024년 귀속 소득세 미납 안내. 미납 시 강제징수 대상입니다. 이의신청 및 납부안내: http://gov-check.tax-refund.example/l/392a",
+    "label": 1,
+    "sim": 0.8847671747207642
+   },
+   {
+    "text": "[공공행정안전] 귀하의 미납 과태료가 발생하였습니다. 기한 내 미납 시 가산금이 부과되오니 아래 링크를 통해 확인 후 납부바랍니다. 확인: http://k-gov.refund-check.example/v/39210",
+    "label": 1,
+    "sim": 0.8703503012657166
+   },
+   {
+    "text": "[Web발신]\n우리배송 할 수 없습니다 주소를 수정\n하십시오 s.id/6Qkwo",
+    "label": 1,
+    "sim": 0.8485228419303894
+   },
+   {
+    "text": "[정부24] 고객님, 자동차세 미납분(32,440원)이 발생하였습니다. 기한 내 납부하지 않을 경우 가산금이 부과됩니다. 상세 내역 확인: https://gov.korea.example/pay",
+    "label": 0,
+    "sim": 0.8801608085632324
+   },
+   {
+    "text": "[국세청] 귀하의 세금 미납으로 인한 가산금 부과 예정 안내. 상세내역 확인: https://tax-info.refund-check.example/direct",
+    "label": 0,
+    "sim": 0.8780748844146729
+   },
+   {
+    "text": "[법원감찰국] 미납 과태료 알림: 2026년 06월 18일 현재 미납된 과태료가 발생하였습니다. 납부 기한 경과 시 가산금이 부과됩니다. 상세 내역 및 납부 안내: https://k-gov.refund-check.example/notice",
+    "label": 0,
+    "sim": 0.8773053288459778
+   }
+  ]
+ },
+ {
+  "id": "inc-MOB-BEN-076#0:benign",
+  "y": 0,
+  "text": "고객님, 금월 데이터 사용량이 초과되었습니다. 추가 과금 방지를 위해 요금제 변경 또는 초과 확인이 필요합니다. 상세내역 확인: https://my-telecom.customer-check.example",
+  "shots": [
+   {
+    "text": "[안내] 고객님, 금월 데이터 사용량이 기본 제공량을 초과하여 추가 과금이 발생할 예정입니다. 요금폭탄 방지를 위해 즉시 요금제 확인 및 조정을 권고드립니다. 상세내역 확인: https://mobile-billing.check-info.example",
+    "label": 1,
+    "sim": 0.9296934008598328
+   },
+   {
+    "text": "고객님, 금월 데이터 사용량이 초과되어 추가 요금이 발생할 수 있습니다. 미납 방지를 위해 잔여 요금 및 상세 내역을 확인하십시오. https://t-world-bill.check-status.example",
+    "label": 1,
+    "sim": 0.9136702418327332
+   },
+   {
+    "text": "고객님, 이번 달 데이터 사용량이 초과되었습니다. 미확인 시 추가 과금 및 회선 제한이 발생할 수 있습니다. 청구 내역 확인: https://mobile-verify.telecom-bill.example/v",
+    "label": 1,
+    "sim": 0.9014594554901123
+   },
+   {
+    "text": "고객님, 금월 데이터 사용량이 초과되어 추가 요금이 발생할 예정입니다. 요금 명세서 확인 및 데이터 안심옵션 신청은 아래 링크를 확인해 주세요. http://telecom-bill-check.example",
+    "label": 0,
+    "sim": 0.9186121821403503
+   },
+   {
+    "text": "[안내] 고객님, 이번 달 데이터 기본 제공량이 초과되어 추가 과금이 발생할 예정입니다. 요금 폭탄 방지를 위해 즉시 요금제 변경 또는 잔여 데이터 확인이 필요합니다. 상세 확인: https://mobile-verify.plan-check.example/auth",
+    "label": 0,
+    "sim": 0.9059171676635742
+   },
+   {
+    "text": "고객님, 10월분 데이터 이용량이 초과되어 추가 요금이 발생할 예정입니다. 상세 내역 및 요금제 변경은 공식 홈페이지(mobile-info.example/bill)에서 확인해 주세요.",
+    "label": 0,
+    "sim": 0.8908007144927979
+   }
+  ]
+ },
+ {
+  "id": "inc-MOB-BEN-007#0:benign",
+  "y": 0,
+  "text": "[정부지원센터] 2025년 상반기 미수령 지원금 환급 안내. 귀하의 미수령액이 발생하였습니다. 금일 18시 기한 마감 예정이오니 확인 바랍니다. 상세내용: https://gov-refund.example/check",
+  "shots": [
+   {
+    "text": "[생활안정자금] 귀하의 미수령 정부지원금 환급금이 발생하였습니다. 금일 24시 신청 기한 만료 예정이니 즉시 확인 바랍니다. 상세내용: http://k-gov.refund-check.example",
+    "label": 1,
+    "sim": 0.9181286096572876
+   },
+   {
+    "text": "[공공행정안전] 귀하의 미납 과태료가 발생하였습니다. 기한 내 미납 시 가산금이 부과되오니 아래 링크를 통해 확인 후 납부바랍니다. 확인: http://k-gov.refund-check.example/v/39210",
+    "label": 1,
+    "sim": 0.8781790137290955
+   },
+   {
+    "text": "[국세청] 2024년 귀속 소득세 미납 안내. 미납 시 강제징수 대상입니다. 이의신청 및 납부안내: http://gov-check.tax-refund.example/l/392a",
+    "label": 1,
+    "sim": 0.8728452920913696
+   },
+   {
+    "text": "[기획재정부] 2026년 하반기 미수령 정부지원환급금 신청안내. 금일 만료 예정입니다. 즉시 확인 바랍니다. http://k-gov.refund-check.example",
+    "label": 0,
+    "sim": 0.9115368127822876
+   },
+   {
+    "text": "[기획재정부] 고객님 앞으로 배정된 미수령 지원금이 있습니다. 미신청시 국고 환수되오니 신청바랍니다. http://k-gov.refund-check.example",
+    "label": 0,
+    "sim": 0.9074042439460754
+   },
+   {
+    "text": "[정부지원센터] 2025년 상반기 근로장려금 미수령액 발생. 금일 24시 소액 소멸 예정이오니 즉시 신청바랍니다. 확인: https://official-support.gov-info.example",
+    "label": 0,
+    "sim": 0.9040554761886597
+   }
+  ]
+ },
+ {
+  "id": "inc-MOB-BEN-029#0:benign",
+  "y": 0,
+  "text": "고객님, 주소지 불명으로 배송이 중단되었습니다. 정확한 정보 확인 후 재배송 신청 바랍니다. 확인: https://parcel-check.masked-service.example/re-delivery",
+  "shots": [
+   {
+    "text": "고객님, 배송지 주소 불일치로 물품이 반송 예정입니다. 오늘 중 확인 부탁드립니다. 확인: https://parcel-check.delivery-alert.example/v/3812",
+    "label": 1,
+    "sim": 0.9154265522956848
+   },
+   {
+    "text": "고객님 주문하신물품 주소잘못확인되어\n확인/부탁드립니다 https://tinyurl.com/\nyhqcbym2",
+    "label": 1,
+    "sim": 0.8924962282180786
+   },
+   {
+    "text": "[Web발신]\n불일치한 주소지로 인해 배달불가합\n니다.확인 부탁드립니다\n\nwww.modetorr.com",
+    "label": 1,
+    "sim": 0.880049467086792
+   },
+   {
+    "text": "[배송알림] 주소지 불분명으로 배송이 중단되었습니다. 정상적인 배송을 위해 아래 주소에서 정보를 수정해주세요. https://parcel-check.logistics-info.example",
+    "label": 0,
+    "sim": 0.9290086627006531
+   },
+   {
+    "text": "[배송알림] 고객님, 주소지 불분명으로 인해 택배가 반송 예정입니다. 오늘 중 주소지 확인 부탁드립니다. 확인하기: https://delivery-check.info-update.example/track",
+    "label": 0,
+    "sim": 0.8960888981819153
+   },
+   {
+    "text": "고객님의 계정에 비정상적인 로그인이 시도되었습니다. 본인 확인이 완료될 때까지 계정이 일시 보호됩니다. 확인: https://account-security.service-verify.example",
+    "label": 0,
+    "sim": 0.8645071983337402
+   }
+  ]
+ },
+ {
+  "id": "inc-MOB-BEN-042#0:benign_lookalike",
+  "y": 0,
+  "text": "[법규위반알림] 귀하의 차량이 교통법규 위반(신호위반)으로 과태료가 부과되었습니다. 상세내용 확인 및 납부: https://v-gov.refund-check.example",
+  "shots": [
+   {
+    "text": "[법규위반/미납안내] 귀하의 차량이 교통법규 위반(과태료)으로 고지되었습니다. 기한 내 납부하지 않을 경우 가산금이 부과됩니다. 상세내용 확인: http://gov-check.tax-refund.example/l/392a",
+    "label": 1,
+    "sim": 0.9212096929550171
+   },
+   {
+    "text": "[공공행정안전] 귀하의 미납 과태료가 발생하였습니다. 기한 내 미납 시 가산금이 부과되오니 아래 링크를 통해 확인 후 납부바랍니다. 확인: http://k-gov.refund-check.example/v/39210",
+    "label": 1,
+    "sim": 0.8928999900817871
+   },
+   {
+    "text": "[경찰청교통민원]교통범칙금납부통\n지 발송 완료 ghk7k7.toeuc.guru",
+    "label": 1,
+    "sim": 0.8845993280410767
+   },
+   {
+    "text": "[정부민원안내] 귀하의 자동차세 미납액에 따른 과태료가 부과되었습니다. 상세내역 확인: https://gov-portal.tax-info.example",
+    "label": 0,
+    "sim": 0.9084585905075073
+   },
+   {
+    "text": "[법원경찰청] 과태료 미납 안내: 귀하의 차량이 법규 위반으로 과태료가 고지되었습니다. 기한 내 미납 시 가산금이 부과되오니 즉시 확인 바랍니다. 상세내용 확인: https://gov-notice.refund-check.example",
+    "label": 0,
+    "sim": 0.9018299579620361
+   },
+   {
+    "text": "[정부24] 고객님, 자동차세 미납분(32,440원)이 발생하였습니다. 기한 내 납부하지 않을 경우 가산금이 부과됩니다. 상세 내역 확인: https://gov.korea.example/pay",
+    "label": 0,
+    "sim": 0.8785538673400879
+   }
+  ]
+ },
+ {
+  "id": "inc-MOB-BEN-010#0:benign_lookalike",
+  "y": 0,
+  "text": "[공지] 2025년 하반기 채용 합격을 축하드립니다. 서류 제출 기한은 금일 20시까지입니다. 미제출 시 합격이 취소될 수 있으니 반드시 확인 바랍니다. 확인: http://recruit-verify.check-status.example/apply",
+  "shots": [
+   {
+    "text": "[채용공고] 귀하의 최종 면접 합격을 축하드립니다. 입사지원 서류 중 누락된 사항이 있어 안내드리오니 금일 20시까지 아래 링크를 통해 본인인증 후 서류를 보완해 주시기 바랍니다. 기한 내 미제출 시 합격이 취소될 수 있습니다. https://hr-portal.recruit-check.example/auth",
+    "label": 1,
+    "sim": 0.8944494724273682
+   },
+   {
+    "text": "[모바일채용] 귀하의 최종 면접 합격을 축하드립니다. 합격자 등록 및 서류 제출이 오늘 17시 마감됩니다. 기한 내 미등록 시 합격이 취소될 수 있으니 반드시 확인 바랍니다. 확인: https://hr-portal.recruit-management.example/verify",
+    "label": 1,
+    "sim": 0.8939974904060364
+   },
+   {
+    "text": "삭제대기 ***,***원확인하세요lD ***********패쓰 ****lⓔt22⑨⑧.com",
+    "label": 1,
+    "sim": 0.8735796213150024
+   },
+   {
+    "text": "[사칭안내] 2026 하반기 신입사원 채용 최종 합격을 축하드립니다. 입사 서류 제출 기한이 오늘 18시까지입니다. 미제출 시 합격이 취소될 수 있으니 아래 링크에서 확인 바랍니다. https://hr-portal.recruit-check.example/final",
+    "label": 0,
+    "sim": 0.9009885787963867
+   },
+   {
+    "text": "[채용안내] 귀하의 서류 합격을 축하드립니다. 면접 일정 확인 및 증빙서류 등록을 위해 아래 링크로 접속해 주시기 바랍니다. 기한 내 미등록 시 합격이 취소될 수 있습니다. https://hr-portal.recruit-system.example/login",
+    "label": 0,
+    "sim": 0.8936716318130493
+   },
+   {
+    "text": "[OOO 채용] 안녕하세요. 2025년 상반기 신입사원 채용 서류전형 합격자 발표 안내입니다. 결과 확인: https://recruit.corporate-portal.example/result",
+    "label": 0,
+    "sim": 0.8866921067237854
+   }
+  ]
+ },
+ {
+  "id": "inc-MOB-BEN-010#1:benign_lookalike",
+  "y": 0,
+  "text": "[긴급] 채용 서류 보완 요청: 주민등록초본 및 가족관계증명서 누락. 하단 링크에서 본인인증 후 업로드하세요. http://recruit-verify.check-status.example/verify",
+  "shots": [
+   {
+    "text": "[채용공고] 귀하의 최종 면접 합격을 축하드립니다. 입사지원 서류 중 누락된 사항이 있어 안내드리오니 금일 20시까지 아래 링크를 통해 본인인증 후 서류를 보완해 주시기 바랍니다. 기한 내 미제출 시 합격이 취소될 수 있습니다. https://hr-portal.recruit-check.example/auth",
+    "label": 1,
+    "sim": 0.893644392490387
+   },
+   {
+    "text": "[모바일채용] 귀하의 최종 면접 합격을 축하드립니다. 합격자 등록 및 서류 제출이 오늘 17시 마감됩니다. 기한 내 미등록 시 합격이 취소될 수 있으니 반드시 확인 바랍니다. 확인: https://hr-portal.recruit-management.example/verify",
+    "label": 1,
+    "sim": 0.8689404726028442
+   },
+   {
+    "text": "삭제대기 ***,***원확인하세요lD ***********패쓰 ****lⓔt22⑨⑧.com",
+    "label": 1,
+    "sim": 0.8673920631408691
+   },
+   {
+    "text": "[채용안내] 귀하의 서류 합격을 축하드립니다. 면접 일정 확인 및 증빙서류 등록을 위해 아래 링크로 접속해 주시기 바랍니다. 기한 내 미등록 시 합격이 취소될 수 있습니다. https://hr-portal.recruit-system.example/login",
+    "label": 0,
+    "sim": 0.8782457113265991
+   },
+   {
+    "text": "고객님의 계정에 비정상적인 로그인이 시도되었습니다. 본인 확인이 완료될 때까지 계정이 일시 보호됩니다. 확인: https://account-security.service-verify.example",
+    "label": 0,
+    "sim": 0.8707640171051025
+   },
+   {
+    "text": "[보안통지] 고객님의 계정이 새로운 환경에서 로그인되었습니다. 본인이 아닐 경우 24시간 내 아래 링크에서 차단/해제 절차를 진행하십시오. 미조치 시 계정이 영구 정지됩니다. http://account-safety.verify-info.example",
+    "label": 0,
+    "sim": 0.8663609027862549
+   }
+  ]
+ },
+ {
+  "id": "inc-MOB-BEN-015#0:benign_lookalike",
+  "y": 0,
+  "text": "엄마 나 폰 고장나서 수리 맡겼어. 급하게 송금할 데가 있는데 대신 좀 해줘. 여기 링크로 확인해줘. http://family-pay.emergency-help.example",
+  "shots": [
+   {
+    "text": "엄마 나 폰 액정 깨져서 수리 맡겼어. 지금 급하게 송금해야 할 데가 있는데 인증이 안 돼서 그래. 여기 주소로 들어가서 확인 좀 해줘: https://k-gov.support-mobile.example",
+    "label": 1,
+    "sim": 0.9142736196517944
+   },
+   {
+    "text": "엄마 나야 폰고장이라서 수리 맡기고\n부탁할거 있어서 문자 했어 지금 컴터로\n피시용 문자나라로 사용하고 있어 메시지\n글 보면 답장줘 ~~",
+    "label": 1,
+    "sim": 0.8990895748138428
+   },
+   {
+    "text": "아빠, 나 핸드폰 액정 깨져서 AS 맡겼어. 지금 급하게 송금할 게 있는데 이 번호로 연락 좀 줘. http://k-gov.refund-check.example/urgent",
+    "label": 1,
+    "sim": 0.8980057239532471
+   },
+   {
+    "text": "엄마 나 폰 액정 깨져서 수리 맡겼어. 지금 급하게 송금해야 할 데가 있는데 대신 좀 해줄 수 있어? 확인하면 이 링크로 톡 줘. http://family-care.urgent-help.example/chat",
+    "label": 0,
+    "sim": 0.9280834794044495
+   },
+   {
+    "text": "엄마, 나 핸드폰 액정 깨져서 수리 맡겼어. 지금 임시폰이라 연락이 안 돼. 급하게 결제할 게 있는데 도와줄 수 있어? 아래 링크로 확인 좀 해줘. http://family-repair.urgent-check.example",
+    "label": 0,
+    "sim": 0.913612425327301
+   },
+   {
+    "text": "아빠 나 핸드폰 액정 깨져서 수리 맡겼어. 지금 급하게 송금할 데가 있는데 대신 좀 해줄 수 있어? 확인하면 답장 줘.",
+    "label": 0,
+    "sim": 0.9020780324935913
+   }
+  ]
+ },
+ {
+  "id": "inc-MOB-BEN-015#1:benign_lookalike",
+  "y": 0,
+  "text": "(광고) [모바일 안심결제] 고객님, 본인확인 인증번호 [8291]가 발송되었습니다. 본인이 아닐 경우 즉시 확인: http://secure-auth.check-verify.example",
+  "shots": [
+   {
+    "text": "???님\n[이베이]\n인증번호 29**\nKRW728,000\n원결제완료\n본인아닐경우\n소비자고객센\n터\n문의:021-277\n-8673",
+    "label": 1,
+    "sim": 0.8695682287216187
+   },
+   {
+    "text": "ⓐⓚⓞ-*.com안녕하세요 ⓐⓚⓞ 입니다.회원님 계좌점검 정상적으로 종료되었습니다.오늘하루도 고생하셨습니다.^^",
+    "label": 1,
+    "sim": 0.8664575815200806
+   },
+   {
+    "text": "[국외발신]\n???님\n[이베이]\n인증번호 69**\nKRW 285,300 승인\n본인아닐경우\n소비자 보호센터\n문의:021-272-7138",
+    "label": 1,
+    "sim": 0.8664517402648926
+   },
+   {
+    "text": "고객님의 계정에 비정상적인 로그인이 시도되었습니다. 본인 확인이 완료될 때까지 계정이 일시 보호됩니다. 확인: https://account-security.service-verify.example",
+    "label": 0,
+    "sim": 0.8732138276100159
+   },
+   {
+    "text": "[보안통지] 고객님의 계정에 새로운 기기에서 로그인이 감지되었습니다. 본인이 아닐 경우 즉시 확인하십시오: https://portal.account-security.example/check-login",
+    "label": 0,
+    "sim": 0.8664752244949341
+   },
+   {
+    "text": "[결제알림] 2025-12-22 14:45 고객님 명의로 48,500원(가전) 승인완료. 본인 아닐 시 즉시 확인: https://m.service-portal.example/pay-check",
+    "label": 0,
+    "sim": 0.8660197257995605
+   }
+  ]
+ },
+ {
+  "id": "inc-MOB-BEN-033#0:benign_lookalike",
+  "y": 0,
+  "text": "[정부민원포털] 법규위반 과태료 미납 안내. 납부기한 경과 시 가산금 부과 및 압류 조치 예정. 확인: https://k-gov.refund-check.example",
+  "shots": [
+   {
+    "text": "[공공행정안전] 귀하의 미납 과태료가 발생하였습니다. 기한 내 미납 시 가산금이 부과되오니 아래 링크를 통해 확인 후 납부바랍니다. 확인: http://k-gov.refund-check.example/v/39210",
+    "label": 1,
+    "sim": 0.9214184284210205
+   },
+   {
+    "text": "[법규위반/미납안내] 귀하의 차량이 교통법규 위반(과태료)으로 고지되었습니다. 기한 내 납부하지 않을 경우 가산금이 부과됩니다. 상세내용 확인: http://gov-check.tax-refund.example/l/392a",
+    "label": 1,
+    "sim": 0.9061495065689087
+   },
+   {
+    "text": "[생활안정자금] 귀하의 미수령 정부지원금 환급금이 발생하였습니다. 금일 24시 신청 기한 만료 예정이니 즉시 확인 바랍니다. 상세내용: http://k-gov.refund-check.example",
+    "label": 1,
+    "sim": 0.8762533664703369
+   },
+   {
+    "text": "[법원경찰청] 과태료 미납 안내: 귀하의 차량이 법규 위반으로 과태료가 고지되었습니다. 기한 내 미납 시 가산금이 부과되오니 즉시 확인 바랍니다. 상세내용 확인: https://gov-notice.refund-check.example",
+    "label": 0,
+    "sim": 0.9048382043838501
+   },
+   {
+    "text": "[국세청] 귀하의 세금 미납으로 인한 가산금 부과 예정 안내. 상세내역 확인: https://tax-info.refund-check.example/direct",
+    "label": 0,
+    "sim": 0.9000720381736755
+   },
+   {
+    "text": "[법원감찰국] 미납 과태료 알림: 2026년 06월 18일 현재 미납된 과태료가 발생하였습니다. 납부 기한 경과 시 가산금이 부과됩니다. 상세 내역 및 납부 안내: https://k-gov.refund-check.example/notice",
+    "label": 0,
+    "sim": 0.898819088935852
+   }
+  ]
+ },
+ {
+  "id": "inc-MOB-BEN-079#0:benign_lookalike",
+  "y": 0,
+  "text": "[채용공고] 귀하의 최종 면접 결과를 안내드립니다. 결과 확인 및 등록을 위해 금일 18시까지 아래 URL을 통해 서류 제출을 완료해 주시기 바랍니다. 미제출 시 합격이 취소될 수 있습니다. https://career-confirm.hr-service.example/v/39201",
+  "shots": [
+   {
+    "text": "[모바일채용] 귀하의 최종 면접 합격을 축하드립니다. 합격자 등록 및 서류 제출이 오늘 17시 마감됩니다. 기한 내 미등록 시 합격이 취소될 수 있으니 반드시 확인 바랍니다. 확인: https://hr-portal.recruit-management.example/verify",
+    "label": 1,
+    "sim": 0.9093284010887146
+   },
+   {
+    "text": "[채용공고] 귀하의 최종 면접 합격을 축하드립니다. 입사지원 서류 중 누락된 사항이 있어 안내드리오니 금일 20시까지 아래 링크를 통해 본인인증 후 서류를 보완해 주시기 바랍니다. 기한 내 미제출 시 합격이 취소될 수 있습니다. https://hr-portal.recruit-check.example/auth",
+    "label": 1,
+    "sim": 0.904935896396637
+   },
+   {
+    "text": "[Web발신]\n우리배송 할 수 없습니다 주소를 수정\n하십시오 s.id/6Qkwo",
+    "label": 1,
+    "sim": 0.8722783327102661
+   },
+   {
+    "text": "[채용안내] 귀하의 서류 합격을 축하드립니다. 면접 일정 확인 및 증빙서류 등록을 위해 아래 링크로 접속해 주시기 바랍니다. 기한 내 미등록 시 합격이 취소될 수 있습니다. https://hr-portal.recruit-system.example/login",
+    "label": 0,
+    "sim": 0.9099968671798706
+   },
+   {
+    "text": "[사칭안내] 2026 하반기 신입사원 채용 최종 합격을 축하드립니다. 입사 서류 제출 기한이 오늘 18시까지입니다. 미제출 시 합격이 취소될 수 있으니 아래 링크에서 확인 바랍니다. https://hr-portal.recruit-check.example/final",
+    "label": 0,
+    "sim": 0.8902365565299988
+   },
+   {
+    "text": "[OOO 채용] 안녕하세요. 2025년 상반기 신입사원 채용 서류전형 합격자 발표 안내입니다. 결과 확인: https://recruit.corporate-portal.example/result",
+    "label": 0,
+    "sim": 0.8781484365463257
+   }
+  ]
+ },
+ {
+  "id": "inc-MOB-BEN-022#0:benign_lookalike",
+  "y": 0,
+  "text": "[금융보안센터] 고객님, 사용 중인 금융앱의 보안 패치 업데이트가 필요합니다. 미업데이트 시 금융 서비스 이용이 제한됩니다. 즉시 업데이트: https://safety-update.secure-bank.example/v2",
+  "shots": [
+   {
+    "text": "[보안통지] 고객님의 금융 서비스 이용 제한 안내. 최신 보안 패치가 적용되지 않은 기기로 확인되었습니다. 즉시 업데이트가 필요합니다. 확인: https://security-patch.secure-update.example/v2",
+    "label": 1,
+    "sim": 0.9184087514877319
+   },
+   {
+    "text": "[계정안내] 회원님의 계정이 새로운 환경에서 로그인되었습니다. 본인이 아닐 경우 아래 링크를 통해 계정 보호 조치를 진행해 주세요. 24시간 내 미조치 시 계정이 영구 정지될 수 있습니다. https://account-protect.safe-check.example/auth",
+    "label": 1,
+    "sim": 0.8601873517036438
+   },
+   {
+    "text": "업데이트!미친배당 대참사!https://dooo.us/spo**항상감사합니다*년㈜안전",
+    "label": 1,
+    "sim": 0.8585977554321289
+   },
+   {
+    "text": "[금융보안] 필수 보안 업데이트 안내: 최근 급증하는 금융 사기 방지를 위해 이용 중이신 금융 앱의 최신 보안 패치가 출시되었습니다. 미업데이트 시 서비스 이용이 제한될 수 있습니다. 설치: https://safe-update.secure-bank.example/v2",
+    "label": 0,
+    "sim": 0.9386512041091919
+   },
+   {
+    "text": "고객님, 최신 금융 보안 정책에 따라 앱 업데이트가 필요합니다. 미업데이트 시 당일 24시부터 뱅킹 서비스 이용이 제한됩니다. 확인: https://safety-bank.update-check.example/v2",
+    "label": 0,
+    "sim": 0.9309808015823364
+   },
+   {
+    "text": "[금융안내] 사용 중이신 뱅킹 앱의 보안 업데이트가 필요합니다. 미업데이트 시 서비스 이용이 제한될 수 있습니다. 공식 홈페이지(https://security.update-check.example)에서 확인하세요.",
+    "label": 0,
+    "sim": 0.9227220416069031
+   }
+  ]
+ },
+ {
+  "id": "inc-MOB-BEN-022#1:benign_lookalike",
+  "y": 0,
+  "text": "[금융보안센터] 보안 정책 강화로 인한 필수 업데이트 안내. 기한 내 미완료 시 타행 이체 및 결제가 정지됩니다. 연결: https://safety-update.secure-bank.example/v2",
+  "shots": [
+   {
+    "text": "[보안통지] 고객님의 금융 서비스 이용 제한 안내. 최신 보안 패치가 적용되지 않은 기기로 확인되었습니다. 즉시 업데이트가 필요합니다. 확인: https://security-patch.secure-update.example/v2",
+    "label": 1,
+    "sim": 0.901756763458252
+   },
+   {
+    "text": "고객님, 계정 내 타지역 로그인 시도가 감지되어 보안을 위해 계정이 일시 잠금되었습니다. 24시간 내 본인확인이 없을 시 계정이 영구 정지됩니다. 해제: https://account-secure-check.example",
+    "label": 1,
+    "sim": 0.8776962757110596
+   },
+   {
+    "text": "고객님, 이번 달 데이터 사용량이 초과되었습니다. 미확인 시 추가 과금 및 회선 제한이 발생할 수 있습니다. 청구 내역 확인: https://mobile-verify.telecom-bill.example/v",
+    "label": 1,
+    "sim": 0.8741822242736816
+   },
+   {
+    "text": "고객님, 최신 금융 보안 정책에 따라 앱 업데이트가 필요합니다. 미업데이트 시 당일 24시부터 뱅킹 서비스 이용이 제한됩니다. 확인: https://safety-bank.update-check.example/v2",
+    "label": 0,
+    "sim": 0.9000235795974731
+   },
+   {
+    "text": "[금융보안] 필수 보안 업데이트 안내: 최근 급증하는 금융 사기 방지를 위해 이용 중이신 금융 앱의 최신 보안 패치가 출시되었습니다. 미업데이트 시 서비스 이용이 제한될 수 있습니다. 설치: https://safe-update.secure-bank.example/v2",
+    "label": 0,
+    "sim": 0.8989142179489136
+   },
+   {
+    "text": "[금융안내] 사용 중이신 뱅킹 앱의 보안 업데이트가 필요합니다. 미업데이트 시 서비스 이용이 제한될 수 있습니다. 공식 홈페이지(https://security.update-check.example)에서 확인하세요.",
+    "label": 0,
+    "sim": 0.8928335309028625
+   }
+  ]
+ },
+ {
+  "id": "inc-MOB-BEN-016#0:benign_lookalike",
+  "y": 0,
+  "text": "[WEB발신] 고객님, (04/20) 15:41:03 해외결제 승인금액 $849.00 USD 완료. 본인 요청 아닐 시 즉시 차단 및 신고 바랍니다. 확인: https://pay-security.check-info.example/n/39b2",
+  "shots": [
+   {
+    "text": "[Web발신]\n[삼성페이]\n승인번호[0598]\n285,150원 처리완료\n이용해주셔서 감사합니다.",
+    "label": 1,
+    "sim": 0.8714320063591003
+   },
+   {
+    "text": "[국제발신]\n[결제내역\n승인코드:2**1\nKRW 2,190,000원\n본인아닐시 신고요망\n배송관련 고객센처\n070-7678-6931",
+    "label": 1,
+    "sim": 0.871304988861084
+   },
+   {
+    "text": "귀하의 Google 계정이\n해외에서 로그인시도 되었습니다\n본인이 아니라면 확인후 차단하세요\nhttp:://na.to/a2f9",
+    "label": 1,
+    "sim": 0.8703808784484863
+   },
+   {
+    "text": "[결제알림] 2025-12-22 14:45 고객님 명의로 48,500원(가전) 승인완료. 본인 아닐 시 즉시 확인: https://m.service-portal.example/pay-check",
+    "label": 0,
+    "sim": 0.8756977319717407
+   },
+   {
+    "text": "고객님의 계정에 비정상적인 로그인이 시도되었습니다. 본인 확인이 완료될 때까지 계정이 일시 보호됩니다. 확인: https://account-security.service-verify.example",
+    "label": 0,
+    "sim": 0.8640491962432861
+   },
+   {
+    "text": "[카드사] 12/22 16:53 (0000)님 카드 458,000원 승인완료. 본인 이용 아닐 시 고객센터(1588-xxxx)로 즉시 문의 바랍니다.",
+    "label": 0,
+    "sim": 0.8637365102767944
+   }
+  ]
+ },
+ {
+  "id": "inc-MOB-BEN-059#0:benign_lookalike",
+  "y": 0,
+  "text": "고객님, 공동인증서가 오늘 만료될 예정입니다. 만료 시 모든 금융 서비스 이용이 제한되오니 즉시 갱신해 주시기 바랍니다. https://kb-cert-renew.example/auth",
+  "shots": [
+   {
+    "text": "공동인증서 만료 안내: 고객님의 공동인증서 만료가 금일 24시 예정입니다. 만료 시 금융거래 및 공공기관 이용이 제한되오니 즉시 갱신하시기 바랍니다. 갱신하기: http://k-gov.auth-update.example/cert",
+    "label": 1,
+    "sim": 0.9196444749832153
+   },
+   {
+    "text": "[Web발신]\n우리배송 할 수 없습니다 주소를 수정\n하십시오 s.id/6Qkwo",
+    "label": 1,
+    "sim": 0.8736809492111206
+   },
+   {
+    "text": "[보안통지] 고객님의 금융 서비스 이용 제한 안내. 최신 보안 패치가 적용되지 않은 기기로 확인되었습니다. 즉시 업데이트가 필요합니다. 확인: https://security-patch.secure-update.example/v2",
+    "label": 1,
+    "sim": 0.8729825019836426
+   },
+   {
+    "text": "[금융기관] 고객님의 공동인증서가 금일 만료될 예정입니다. 만료 시 금융거래가 제한되오니 아래 링크를 통해 갱신하시기 바랍니다. https://kb-auth.security-verify.example/renew",
+    "label": 0,
+    "sim": 0.9371092319488525
+   },
+   {
+    "text": "고객님, 공동인증서 만료가 오늘 24시 임박하였습니다. 갱신하지 않을 경우 내일부터 모든 금융거래가 중단됩니다. 즉시 갱신: https://cert-renew.update-service.example/login",
+    "label": 0,
+    "sim": 0.9312142133712769
+   },
+   {
+    "text": "[보안통지] 고객님의 공동인증서가 오늘 만료 예정입니다. 만료 시 모든 금융거래가 제한되오니 즉시 갱신바랍니다. 확인: https://cert-update.auth-center.example/manage",
+    "label": 0,
+    "sim": 0.9293742179870605
+   }
+  ]
+ },
+ {
+  "id": "inc-MOB-BEN-070#0:benign_lookalike",
+  "y": 0,
+  "text": "고객님, 주소지 불분명으로 택배 반송 예정입니다. 오늘 내로 아래 링크에서 주소 확인 및 재배송 요청 부탁드립니다. bit.example/logistics-retry",
+  "shots": [
+   {
+    "text": "반송처리중 주소지 확인부탁드립니\n다(대한통운) http://tinyurl.com/\nyxqobtr7",
+    "label": 1,
+    "sim": 0.8929175734519958
+   },
+   {
+    "text": "고객님, 배송지 주소 불일치로 물품이 반송 예정입니다. 오늘 중 확인 부탁드립니다. 확인: https://parcel-check.delivery-alert.example/v/3812",
+    "label": 1,
+    "sim": 0.8923379182815552
+   },
+   {
+    "text": "반송처리중 주소지 확인부탁드립니\n다(우체국 물류) http://\ntinyurl.com/.yxqxhu8b",
+    "label": 1,
+    "sim": 0.8918293714523315
+   },
+   {
+    "text": "[배송알림] 고객님, 주소지 불분명으로 인해 택배가 반송 예정입니다. 오늘 중 주소지 확인 부탁드립니다. 확인하기: https://delivery-check.info-update.example/track",
+    "label": 0,
+    "sim": 0.9035854339599609
+   },
+   {
+    "text": "[배송알림] 주소지 불분명으로 배송이 중단되었습니다. 정상적인 배송을 위해 아래 주소에서 정보를 수정해주세요. https://parcel-check.logistics-info.example",
+    "label": 0,
+    "sim": 0.8872485160827637
+   },
+   {
+    "text": "고객님의 계정에 비정상적인 로그인이 시도되었습니다. 본인 확인이 완료될 때까지 계정이 일시 보호됩니다. 확인: https://account-security.service-verify.example",
+    "label": 0,
+    "sim": 0.8630566596984863
+   }
+  ]
+ },
+ {
+  "id": "inc-MOB-BEN-089#0:benign_lookalike",
+  "y": 0,
+  "text": "[결제알림] 2026/06/18 13:05 98,200원 승인완료. 본인 요청이 아닐 시 즉시 확인 및 신고 바랍니다. k-gov.refund-check.example",
+  "shots": [
+   {
+    "text": "[생활안정자금] 귀하의 미수령 정부지원금 환급금이 발생하였습니다. 금일 24시 신청 기한 만료 예정이니 즉시 확인 바랍니다. 상세내용: http://k-gov.refund-check.example",
+    "label": 1,
+    "sim": 0.871911883354187
+   },
+   {
+    "text": "삭제대기 ***,***원확인하세요lD ***********패쓰 ****lⓔt22⑨⑧.com",
+    "label": 1,
+    "sim": 0.8679149150848389
+   },
+   {
+    "text": "고객님 주문하신물품 주소잘못확인되어\n확인/부탁드립니다 https://tinyurl.com/\nyhqcbym2",
+    "label": 1,
+    "sim": 0.8669126033782959
+   },
+   {
+    "text": "[결제알림] 2025-12-22 14:45 고객님 명의로 48,500원(가전) 승인완료. 본인 아닐 시 즉시 확인: https://m.service-portal.example/pay-check",
+    "label": 0,
+    "sim": 0.8788642287254333
+   },
+   {
+    "text": "[기획재정부] 2026년 하반기 미수령 정부지원환급금 신청안내. 금일 만료 예정입니다. 즉시 확인 바랍니다. http://k-gov.refund-check.example",
+    "label": 0,
+    "sim": 0.8732035160064697
+   },
+   {
+    "text": "[기획재정부] 고객님 앞으로 배정된 미수령 지원금이 있습니다. 미신청시 국고 환수되오니 신청바랍니다. http://k-gov.refund-check.example",
+    "label": 0,
+    "sim": 0.8727747201919556
+   }
+  ]
+ },
+ {
+  "id": "inc-MOB-MAL-081#0:malicious",
+  "y": 1,
+  "text": "[배송알림] 주소지 불분명으로 처리가 지연되고 있습니다. 오늘 중 미확인 시 반송 예정입니다. 확인: https://logistics-check.update-info.example/view/3921",
+  "shots": [
+   {
+    "text": "고객님, 배송지 주소 불일치로 물품이 반송 예정입니다. 오늘 중 확인 부탁드립니다. 확인: https://parcel-check.delivery-alert.example/v/3812",
+    "label": 1,
+    "sim": 0.9049190878868103
+   },
+   {
+    "text": "고객님 주문하신물품 주소잘못확인되어\n확인/부탁드립니다 https://tinyurl.com/\nyhqcbym2",
+    "label": 1,
+    "sim": 0.8911490440368652
+   },
+   {
+    "text": "[CJ대한통운]고객님\n[Web발신]\n[CJ대한통운]고객님 안녕하세여. 배\n송주소 오류로 배송이 지연되고 있습\n니다. 정확한 주소 수정해주세요.\nbit.ly/2LYrJ3B",
+    "label": 1,
+    "sim": 0.8894229531288147
+   },
+   {
+    "text": "[배송알림] 고객님, 주소지 불분명으로 인해 택배가 반송 예정입니다. 오늘 중 주소지 확인 부탁드립니다. 확인하기: https://delivery-check.info-update.example/track",
+    "label": 0,
+    "sim": 0.9105765223503113
+   },
+   {
+    "text": "[배송알림] 주소지 불분명으로 배송이 중단되었습니다. 정상적인 배송을 위해 아래 주소에서 정보를 수정해주세요. https://parcel-check.logistics-info.example",
+    "label": 0,
+    "sim": 0.9080432653427124
+   },
+   {
+    "text": "고객님의 계정에 비정상적인 로그인이 시도되었습니다. 본인 확인이 완료될 때까지 계정이 일시 보호됩니다. 확인: https://account-security.service-verify.example",
+    "label": 0,
+    "sim": 0.8679782152175903
+   }
+  ]
+ },
+ {
+  "id": "inc-MOB-MAL-071#0:malicious",
+  "y": 1,
+  "text": "[통신지원] 고객님, 금월 데이터 사용량 초과로 인한 추가 과금(49,800원) 예정입니다. 즉시 감면 신청 및 상세 확인: http://mobile-check.billing-alert.example",
+  "shots": [
+   {
+    "text": "[안내] 고객님, 금월 데이터 사용량이 기본 제공량을 초과하여 추가 과금이 발생할 예정입니다. 요금폭탄 방지를 위해 즉시 요금제 확인 및 조정을 권고드립니다. 상세내역 확인: https://mobile-billing.check-info.example",
+    "label": 1,
+    "sim": 0.9179406762123108
+   },
+   {
+    "text": "고객님, 이번 달 데이터 사용량이 초과되었습니다. 미확인 시 추가 과금 및 회선 제한이 발생할 수 있습니다. 청구 내역 확인: https://mobile-verify.telecom-bill.example/v",
+    "label": 1,
+    "sim": 0.8881425857543945
+   },
+   {
+    "text": "고객님, 금월 데이터 사용량이 초과되어 추가 요금이 발생할 수 있습니다. 미납 방지를 위해 잔여 요금 및 상세 내역을 확인하십시오. https://t-world-bill.check-status.example",
+    "label": 1,
+    "sim": 0.887260913848877
+   },
+   {
+    "text": "고객님, 금월 데이터 사용량이 초과되어 추가 요금이 발생할 예정입니다. 요금 명세서 확인 및 데이터 안심옵션 신청은 아래 링크를 확인해 주세요. http://telecom-bill-check.example",
+    "label": 0,
+    "sim": 0.9063353538513184
+   },
+   {
+    "text": "[안내] 고객님, 이번 달 데이터 기본 제공량이 초과되어 추가 과금이 발생할 예정입니다. 요금 폭탄 방지를 위해 즉시 요금제 변경 또는 잔여 데이터 확인이 필요합니다. 상세 확인: https://mobile-verify.plan-check.example/auth",
+    "label": 0,
+    "sim": 0.8940294981002808
+   },
+   {
+    "text": "고객님, 10월분 데이터 이용량이 초과되어 추가 요금이 발생할 예정입니다. 상세 내역 및 요금제 변경은 공식 홈페이지(mobile-info.example/bill)에서 확인해 주세요.",
+    "label": 0,
+    "sim": 0.8811771273612976
+   }
+  ]
+ },
+ {
+  "id": "inc-MOB-MAL-016#0:malicious",
+  "y": 1,
+  "text": "[카드승인] 03/04 10:39 (0000)님 카드 984,000원 승인완료. 본인 요청 아닐 시 즉시 확인 및 신고: https://k-card.refund-check.example",
+  "shots": [
+   {
+    "text": "[Web발신]\n[삼성페이]\n승인번호[0598]\n285,150원 처리완료\n이용해주셔서 감사합니다.",
+    "label": 1,
+    "sim": 0.8753310441970825
+   },
+   {
+    "text": "[생활안정자금] 귀하의 미수령 정부지원금 환급금이 발생하였습니다. 금일 24시 신청 기한 만료 예정이니 즉시 확인 바랍니다. 상세내용: http://k-gov.refund-check.example",
+    "label": 1,
+    "sim": 0.8753262162208557
+   },
+   {
+    "text": "???님\n[이베이]\n인증번호 29**\nKRW728,000\n원결제완료\n본인아닐경우\n소비자고객센\n터\n문의:021-277\n-8673",
+    "label": 1,
+    "sim": 0.871323823928833
+   },
+   {
+    "text": "[카드사] 12/22 16:53 (0000)님 카드 458,000원 승인완료. 본인 이용 아닐 시 고객센터(1588-xxxx)로 즉시 문의 바랍니다.",
+    "label": 0,
+    "sim": 0.9015025496482849
+   },
+   {
+    "text": "[결제알림] 2025-12-22 14:45 고객님 명의로 48,500원(가전) 승인완료. 본인 아닐 시 즉시 확인: https://m.service-portal.example/pay-check",
+    "label": 0,
+    "sim": 0.8902953863143921
+   },
+   {
+    "text": "[알림] 02/16 12:34 카드 승인 48,200원(일시불). 본인 요청이 아닐 경우 고객센터(1588-xxxx)로 문의하시거나 당사 홈페이지에서 확인 바랍니다.",
+    "label": 0,
+    "sim": 0.8829169273376465
+   }
+  ]
+ },
+ {
+  "id": "inc-MOB-MAL-016#1:malicious",
+  "y": 1,
+  "text": "[보안통지] 미확인 결제 건이 접수되었습니다. 1시간 이내 미확인 시 자동 승인 처리됩니다. 즉시 거부 처리: https://k-card.refund-check.example",
+  "shots": [
+   {
+    "text": "고객님 주문하신물품 주소잘못확인되어\n확인/부탁드립니다 https://tinyurl.com/\nyhqcbym2",
+    "label": 1,
+    "sim": 0.8841215968132019
+   },
+   {
+    "text": "[생활안정자금] 귀하의 미수령 정부지원금 환급금이 발생하였습니다. 금일 24시 신청 기한 만료 예정이니 즉시 확인 바랍니다. 상세내용: http://k-gov.refund-check.example",
+    "label": 1,
+    "sim": 0.8840700387954712
+   },
+   {
+    "text": "고객님, 배송지 주소 불일치로 물품이 반송 예정입니다. 오늘 중 확인 부탁드립니다. 확인: https://parcel-check.delivery-alert.example/v/3812",
+    "label": 1,
+    "sim": 0.8776567578315735
+   },
+   {
+    "text": "[보안통지] 고객님의 공동인증서가 오늘 만료 예정입니다. 만료 시 모든 금융거래가 제한되오니 즉시 갱신바랍니다. 확인: https://cert-update.auth-center.example/manage",
+    "label": 0,
+    "sim": 0.8869764804840088
+   },
+   {
+    "text": "[보안통지] 고객님의 계정에 새로운 기기에서 로그인이 감지되었습니다. 본인이 아닐 경우 즉시 확인하십시오: https://portal.account-security.example/check-login",
+    "label": 0,
+    "sim": 0.8825340867042542
+   },
+   {
+    "text": "[보안통지] 고객님의 계정이 새로운 환경에서 로그인되었습니다. 본인이 아닐 경우 24시간 내 아래 링크에서 차단/해제 절차를 진행하십시오. 미조치 시 계정이 영구 정지됩니다. http://account-safety.verify-info.example",
+    "label": 0,
+    "sim": 0.8804806470870972
+   }
+  ]
+ },
+ {
+  "id": "inc-MOB-MAL-028#0:malicious",
+  "y": 1,
+  "text": "[통신사] 고객님, 10월분 요금 미납으로 인해 내일 오전 10시 회선 정지 예정입니다. 미납액 확인 및 정지 해제: https://m-bill.check-status.example/pay",
+  "shots": [
+   {
+    "text": "[알림] 미납 요금으로 인해 익일 오전 회선 정지 예정입니다. 상세 사유 및 요금 납부: https://auth.billing-center.example/status",
+    "label": 1,
+    "sim": 0.9045063257217407
+   },
+   {
+    "text": "[통신지원센터] 고객님, 1월분 통신요금 184,200원이 미납되어 02/17부로 회선 정지 예정입니다. 명세서 확인 및 납부: https://mobile-pay-check.example/bill",
+    "label": 1,
+    "sim": 0.8961414098739624
+   },
+   {
+    "text": "고객님, 이번 달 데이터 사용량이 초과되었습니다. 미확인 시 추가 과금 및 회선 제한이 발생할 수 있습니다. 청구 내역 확인: https://mobile-verify.telecom-bill.example/v",
+    "label": 1,
+    "sim": 0.8785910606384277
+   },
+   {
+    "text": "고객님, 10월분 데이터 이용량이 초과되어 추가 요금이 발생할 예정입니다. 상세 내역 및 요금제 변경은 공식 홈페이지(mobile-info.example/bill)에서 확인해 주세요.",
+    "label": 0,
+    "sim": 0.8898724317550659
+   },
+   {
+    "text": "[안내] 고객님, 이번 달 데이터 기본 제공량이 초과되어 추가 과금이 발생할 예정입니다. 요금 폭탄 방지를 위해 즉시 요금제 변경 또는 잔여 데이터 확인이 필요합니다. 상세 확인: https://mobile-verify.plan-check.example/auth",
+    "label": 0,
+    "sim": 0.870878279209137
+   },
+   {
+    "text": "고객님, 금월 데이터 사용량이 초과되어 추가 요금이 발생할 예정입니다. 요금 명세서 확인 및 데이터 안심옵션 신청은 아래 링크를 확인해 주세요. http://telecom-bill-check.example",
+    "label": 0,
+    "sim": 0.8680919408798218
+   }
+  ]
+ },
+ {
+  "id": "inc-MOB-MAL-070#0:malicious",
+  "y": 1,
+  "text": "엄마, 나 핸드폰 액정 깨져서 수리 맡겼어. 지금 이 번호로 임시 연락 중인데, 수리비 급하게 보내야 해서 90만원만 이 링크로 좀 보내줘. k-gov.refund-check.example",
+  "shots": [
+   {
+    "text": "엄마 나 폰 액정 깨져서 수리 맡겼어. 지금 급하게 송금해야 할 데가 있는데 인증이 안 돼서 그래. 여기 주소로 들어가서 확인 좀 해줘: https://k-gov.support-mobile.example",
+    "label": 1,
+    "sim": 0.9193353652954102
+   },
+   {
+    "text": "아빠, 나 핸드폰 액정 깨져서 AS 맡겼어. 지금 급하게 송금할 게 있는데 이 번호로 연락 좀 줘. http://k-gov.refund-check.example/urgent",
+    "label": 1,
+    "sim": 0.9181420207023621
+   },
+   {
+    "text": "엄마 난데 폰 떨어뜨렸어ㅠㅠ액정이깨져서 수리맡겼어. 이번호는 피시용이라 문자만 가능해 여기로 문자 줘",
+    "label": 1,
+    "sim": 0.8973125219345093
+   },
+   {
+    "text": "엄마, 나 핸드폰 액정 깨져서 수리 맡겼어. 지금 임시폰이라 연락이 안 돼. 급하게 결제할 게 있는데 도와줄 수 있어? 아래 링크로 확인 좀 해줘. http://family-repair.urgent-check.example",
+    "label": 0,
+    "sim": 0.9228696227073669
+   },
+   {
+    "text": "엄마 나 폰 액정 깨져서 수리 맡겼어. 지금 급하게 송금해야 할 데가 있는데 대신 좀 해줄 수 있어? 확인하면 이 링크로 톡 줘. http://family-care.urgent-help.example/chat",
+    "label": 0,
+    "sim": 0.9097690582275391
+   },
+   {
+    "text": "아빠, 나 폰 액정 깨져서 수리 맡겼어. 급하게 결제할 게 있는데 이 번호로 연락 줘. 확인하면 여기 링크 눌러서 톡 줘. https://family-support.portal.example/chat",
+    "label": 0,
+    "sim": 0.9032812118530273
+   }
+  ]
+ },
+ {
+  "id": "inc-MOB-MAL-070#1:malicious",
+  "y": 1,
+  "text": "(광고) [OO은행] 고객님, 비정상 접속 시도로 인해 계정이 잠금되었습니다. 본인 인증 후 해제해 주세요. k-gov.refund-check.example",
+  "shots": [
+   {
+    "text": "삭제대기 ***,***원확인하세요lD ***********패쓰 ****lⓔt22⑨⑧.com",
+    "label": 1,
+    "sim": 0.8748149871826172
+   },
+   {
+    "text": "[Web발신]\n우리배송 할 수 없습니다 주소를 수정\n하십시오 s.id/6Qkwo",
+    "label": 1,
+    "sim": 0.8740147352218628
+   },
+   {
+    "text": "귀하의 Google 계정이\n해외에서 로그인시도 되었습니다\n본인이 아니라면 확인후 차단하세요\nhttp:://na.to/a2f9",
+    "label": 1,
+    "sim": 0.8740075826644897
+   },
+   {
+    "text": "고객님의 계정에 비정상적인 로그인이 시도되었습니다. 본인 확인이 완료될 때까지 계정이 일시 보호됩니다. 확인: https://account-security.service-verify.example",
+    "label": 0,
+    "sim": 0.8727439641952515
+   },
+   {
+    "text": "[보안통지] 고객님의 계정에 새로운 기기에서 로그인이 감지되었습니다. 본인이 아닐 경우 즉시 확인하십시오: https://portal.account-security.example/check-login",
+    "label": 0,
+    "sim": 0.8700751066207886
+   },
+   {
+    "text": "[기획재정부] 고객님 앞으로 배정된 미수령 지원금이 있습니다. 미신청시 국고 환수되오니 신청바랍니다. http://k-gov.refund-check.example",
+    "label": 0,
+    "sim": 0.868384599685669
+   }
+  ]
+ },
+ {
+  "id": "inc-MOB-MAL-054#0:malicious",
+  "y": 1,
+  "text": "[금융보안원] 고객님의 공동인증서가 금일 만료 예정입니다. 만료 시 모든 금융거래가 제한되오니 즉시 갱신바랍니다. 안내: https://k-cert-update.example/auth",
+  "shots": [
+   {
+    "text": "공동인증서 만료 안내: 고객님의 공동인증서 만료가 금일 24시 예정입니다. 만료 시 금융거래 및 공공기관 이용이 제한되오니 즉시 갱신하시기 바랍니다. 갱신하기: http://k-gov.auth-update.example/cert",
+    "label": 1,
+    "sim": 0.9241389632225037
+   },
+   {
+    "text": "[보안통지] 고객님의 금융 서비스 이용 제한 안내. 최신 보안 패치가 적용되지 않은 기기로 확인되었습니다. 즉시 업데이트가 필요합니다. 확인: https://security-patch.secure-update.example/v2",
+    "label": 1,
+    "sim": 0.8798550963401794
+   },
+   {
+    "text": "고객님, 계정 내 타지역 로그인 시도가 감지되어 보안을 위해 계정이 일시 잠금되었습니다. 24시간 내 본인확인이 없을 시 계정이 영구 정지됩니다. 해제: https://account-secure-check.example",
+    "label": 1,
+    "sim": 0.8691087961196899
+   },
+   {
+    "text": "[금융기관] 고객님의 공동인증서가 금일 만료될 예정입니다. 만료 시 금융거래가 제한되오니 아래 링크를 통해 갱신하시기 바랍니다. https://kb-auth.security-verify.example/renew",
+    "label": 0,
+    "sim": 0.9428326487541199
+   },
+   {
+    "text": "[보안통지] 고객님의 공동인증서가 오늘 만료 예정입니다. 만료 시 모든 금융거래가 제한되오니 즉시 갱신바랍니다. 확인: https://cert-update.auth-center.example/manage",
+    "label": 0,
+    "sim": 0.9374815821647644
+   },
+   {
+    "text": "고객님, 공동인증서 만료가 오늘 24시 임박하였습니다. 갱신하지 않을 경우 내일부터 모든 금융거래가 중단됩니다. 즉시 갱신: https://cert-renew.update-service.example/login",
+    "label": 0,
+    "sim": 0.9259010553359985
+   }
+  ]
+ },
+ {
+  "id": "inc-MOB-MAL-043#0:malicious",
+  "y": 1,
+  "text": "[통신사알림] 고객님, 10월분 미납 요금이 발생하여 11월 12일부로 회선 정지 예정입니다. 납부 내역 확인 및 정지 해제: https://telecom-bill.pay-info.example/m",
+  "shots": [
+   {
+    "text": "[통신지원센터] 고객님, 1월분 통신요금 184,200원이 미납되어 02/17부로 회선 정지 예정입니다. 명세서 확인 및 납부: https://mobile-pay-check.example/bill",
+    "label": 1,
+    "sim": 0.8993645310401917
+   },
+   {
+    "text": "[알림] 미납 요금으로 인해 익일 오전 회선 정지 예정입니다. 상세 사유 및 요금 납부: https://auth.billing-center.example/status",
+    "label": 1,
+    "sim": 0.8953364491462708
+   },
+   {
+    "text": "고객님, 이번 달 데이터 사용량이 초과되었습니다. 미확인 시 추가 과금 및 회선 제한이 발생할 수 있습니다. 청구 내역 확인: https://mobile-verify.telecom-bill.example/v",
+    "label": 1,
+    "sim": 0.8833353519439697
+   },
+   {
+    "text": "고객님, 10월분 데이터 이용량이 초과되어 추가 요금이 발생할 예정입니다. 상세 내역 및 요금제 변경은 공식 홈페이지(mobile-info.example/bill)에서 확인해 주세요.",
+    "label": 0,
+    "sim": 0.8909562826156616
+   },
+   {
+    "text": "고객님, 금월 데이터 사용량이 초과되어 추가 요금이 발생할 예정입니다. 요금 명세서 확인 및 데이터 안심옵션 신청은 아래 링크를 확인해 주세요. http://telecom-bill-check.example",
+    "label": 0,
+    "sim": 0.8770259618759155
+   },
+   {
+    "text": "[안내] 고객님, 이번 달 데이터 기본 제공량이 초과되어 추가 과금이 발생할 예정입니다. 요금 폭탄 방지를 위해 즉시 요금제 변경 또는 잔여 데이터 확인이 필요합니다. 상세 확인: https://mobile-verify.plan-check.example/auth",
+    "label": 0,
+    "sim": 0.8671069741249084
+   }
+  ]
+ },
+ {
+  "id": "inc-MOB-MAL-025#0:malicious",
+  "y": 1,
+  "text": "[결제승인] 귀하의 명의로 10/21 09:35 카드결제 948,000원이 승인되었습니다. 본인 요청이 아닐 시 즉시 확인 및 신고 바랍니다. https://card-verify.check-safety.example/n/3921",
+  "shots": [
+   {
+    "text": "전화통화안되시네요.앞전에신청해주신 자금 승인나셨습니다. 전화또는 카톡주세요 카톡sbiron",
+    "label": 1,
+    "sim": 0.8711501359939575
+   },
+   {
+    "text": "[Web발신]\n  {질병관리청}\n코로나19 백신 예약 인증\n본인확인 https://ko.gl/\npsSO",
+    "label": 1,
+    "sim": 0.8707644939422607
+   },
+   {
+    "text": "삭제대기 ***,***원확인하세요lD ***********패쓰 ****lⓔt22⑨⑧.com",
+    "label": 1,
+    "sim": 0.8675805330276489
+   },
+   {
+    "text": "[카드사] 12/22 16:53 (0000)님 카드 458,000원 승인완료. 본인 이용 아닐 시 고객센터(1588-xxxx)로 즉시 문의 바랍니다.",
+    "label": 0,
+    "sim": 0.8899827003479004
+   },
+   {
+    "text": "[결제알림] 2025-12-22 14:45 고객님 명의로 48,500원(가전) 승인완료. 본인 아닐 시 즉시 확인: https://m.service-portal.example/pay-check",
+    "label": 0,
+    "sim": 0.8818788528442383
+   },
+   {
+    "text": "[알림] 02/16 12:34 카드 승인 48,200원(일시불). 본인 요청이 아닐 경우 고객센터(1588-xxxx)로 문의하시거나 당사 홈페이지에서 확인 바랍니다.",
+    "label": 0,
+    "sim": 0.868048906326294
+   }
+  ]
+ },
+ {
+  "id": "inc-MOB-MAL-064#0:malicious",
+  "y": 1,
+  "text": "[지원결과안내] 귀하의 채용전형 최종 합격을 축하드립니다. 서류 제출 기한이 오늘 18시까지이오니 아래 링크에서 등록을 완료해주시기 바랍니다. 미등록 시 합격이 자동취소됩니다. https://k-gov.recruit-verify.example/auth",
+  "shots": [
+   {
+    "text": "[모바일채용] 귀하의 최종 면접 합격을 축하드립니다. 합격자 등록 및 서류 제출이 오늘 17시 마감됩니다. 기한 내 미등록 시 합격이 취소될 수 있으니 반드시 확인 바랍니다. 확인: https://hr-portal.recruit-management.example/verify",
+    "label": 1,
+    "sim": 0.9005032181739807
+   },
+   {
+    "text": "[채용공고] 귀하의 최종 면접 합격을 축하드립니다. 입사지원 서류 중 누락된 사항이 있어 안내드리오니 금일 20시까지 아래 링크를 통해 본인인증 후 서류를 보완해 주시기 바랍니다. 기한 내 미제출 시 합격이 취소될 수 있습니다. https://hr-portal.recruit-check.example/auth",
+    "label": 1,
+    "sim": 0.8925902843475342
+   },
+   {
+    "text": "https://hcmportal.wd*.myworkdayjobs.com/ko-KR/Search/login 로",
+    "label": 1,
+    "sim": 0.8701125383377075
+   },
+   {
+    "text": "[채용안내] 귀하의 서류 합격을 축하드립니다. 면접 일정 확인 및 증빙서류 등록을 위해 아래 링크로 접속해 주시기 바랍니다. 기한 내 미등록 시 합격이 취소될 수 있습니다. https://hr-portal.recruit-system.example/login",
+    "label": 0,
+    "sim": 0.8938924670219421
+   },
+   {
+    "text": "[사칭안내] 2026 하반기 신입사원 채용 최종 합격을 축하드립니다. 입사 서류 제출 기한이 오늘 18시까지입니다. 미제출 시 합격이 취소될 수 있으니 아래 링크에서 확인 바랍니다. https://hr-portal.recruit-check.example/final",
+    "label": 0,
+    "sim": 0.8824936747550964
+   },
+   {
+    "text": "[OOO 채용] 안녕하세요. 2025년 상반기 신입사원 채용 서류전형 합격자 발표 안내입니다. 결과 확인: https://recruit.corporate-portal.example/result",
+    "label": 0,
+    "sim": 0.8746657371520996
+   }
+  ]
+ },
+ {
+  "id": "inc-MOB-MAL-017#0:malicious",
+  "y": 1,
+  "text": "[공지] 고객님의 공동인증서가 금일 만료 예정입니다. 만료 시 모든 금융거래가 제한되오니 즉시 갱신바랍니다. 확인: http://cert-renew.gov-secure.example",
+  "shots": [
+   {
+    "text": "공동인증서 만료 안내: 고객님의 공동인증서 만료가 금일 24시 예정입니다. 만료 시 금융거래 및 공공기관 이용이 제한되오니 즉시 갱신하시기 바랍니다. 갱신하기: http://k-gov.auth-update.example/cert",
+    "label": 1,
+    "sim": 0.9201141595840454
+   },
+   {
+    "text": "[Web발신]\n우리배송 할 수 없습니다 주소를 수정\n하십시오 s.id/6Qkwo",
+    "label": 1,
+    "sim": 0.873343825340271
+   },
+   {
+    "text": "[보안통지] 고객님의 금융 서비스 이용 제한 안내. 최신 보안 패치가 적용되지 않은 기기로 확인되었습니다. 즉시 업데이트가 필요합니다. 확인: https://security-patch.secure-update.example/v2",
+    "label": 1,
+    "sim": 0.8702989816665649
+   },
+   {
+    "text": "[금융기관] 고객님의 공동인증서가 금일 만료될 예정입니다. 만료 시 금융거래가 제한되오니 아래 링크를 통해 갱신하시기 바랍니다. https://kb-auth.security-verify.example/renew",
+    "label": 0,
+    "sim": 0.9314255714416504
+   },
+   {
+    "text": "고객님, 공동인증서 만료가 오늘 24시 임박하였습니다. 갱신하지 않을 경우 내일부터 모든 금융거래가 중단됩니다. 즉시 갱신: https://cert-renew.update-service.example/login",
+    "label": 0,
+    "sim": 0.9282955527305603
+   },
+   {
+    "text": "[보안통지] 고객님의 공동인증서가 오늘 만료 예정입니다. 만료 시 모든 금융거래가 제한되오니 즉시 갱신바랍니다. 확인: https://cert-update.auth-center.example/manage",
+    "label": 0,
+    "sim": 0.9242265224456787
+   }
+  ]
+ }
+]

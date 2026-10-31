@@ -1,0 +1,17 @@
+data/
+*.tar
+*.tar.gz
+*.pt
+*.bin
+*.safetensors
+*.ckpt
+*.wav
+*.mp3
+.env
+.env.*
+*.pem
+*.key
+__pycache__/
+*.log
+.venv/
+node_modules/

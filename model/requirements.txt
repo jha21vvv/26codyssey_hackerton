@@ -1,0 +1,9 @@
+# 공통
+scikit-learn
+requests
+# BERT 학습/추론 (GPU 는 환경에 맞는 CUDA 빌드의 torch 를 먼저 설치)
+torch
+transformers
+# 통화 전사(선택)
+faster-whisper
+av>=15,<17

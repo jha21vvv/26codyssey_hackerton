@@ -1,0 +1,58 @@
+{
+  "val_f1": 0.9947912401827408,
+  "model": "klue/bert-base",
+  "test": {
+    "일반": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 539.0
+    },
+    "스미싱": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 804.0
+    },
+    "accuracy": 1.0,
+    "macro avg": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 1343.0
+    },
+    "weighted avg": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 1343.0
+    }
+  },
+  "ext_test": {
+    "일반": {
+      "precision": 0.6551724137931034,
+      "recall": 0.8260869565217391,
+      "f1-score": 0.7307692307692307,
+      "support": 23.0
+    },
+    "스미싱": {
+      "precision": 0.3333333333333333,
+      "recall": 0.16666666666666666,
+      "f1-score": 0.2222222222222222,
+      "support": 12.0
+    },
+    "accuracy": 0.6,
+    "macro avg": {
+      "precision": 0.49425287356321834,
+      "recall": 0.4963768115942029,
+      "f1-score": 0.47649572649572647,
+      "support": 35.0
+    },
+    "weighted avg": {
+      "precision": 0.5448275862068966,
+      "recall": 0.6,
+      "f1-score": 0.5564102564102564,
+      "support": 35.0
+    }
+  }
+}
