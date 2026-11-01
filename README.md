@@ -134,7 +134,7 @@ flowchart LR
 | 🤖 **분류기** | KLUE BERT · RoBERTa (base / large) | 직접 학습 |
 | 📲 **경량 모델** | 로지스틱 회귀 · FNV-1a 해시 · 64KB (폰 안 1차 거르기) | 직접 학습 |
 | 📚 **RAG** | multilingual-e5-base · JSONL 사례 코퍼스 (유사 사기/정상 사례 검색) | 직접 개발 · 오픈소스 모델 |
-| 🧠 **LLM** | Claude Haiku 4.5 (코디세이 AI 게이트웨이) · GPT · Gemini 백업 | 외부 API |
+| 🧠 **LLM** | Claude Haiku 4.5 (코디세이 AI 게이트웨이) · GPT 백업 | 외부 API |
 
 ## 📂 저장소 구조
 
