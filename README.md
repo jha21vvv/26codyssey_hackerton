@@ -1,4 +1,3 @@
-
 <div align="center">
 
 # 🐱 머꼬 MEOKKO
@@ -133,6 +132,7 @@ flowchart LR
 | ☁️ **Infra** | NCP L4 23GB GPU 서버 · Docker Compose · Cloudflare Tunnel · FCM | 외부 인프라 |
 | 🎙️ **STT** | faster-whisper large-v3 fp16 · pyannote 화자 분리 · 개인정보 마스킹 | 직접 구축 · 오픈소스 모델 |
 | 🤖 **분류기** | KLUE BERT · RoBERTa (base / large) | 직접 학습 |
+| 📲 **경량 모델** | 로지스틱 회귀 · FNV-1a 해시 · 64KB (폰 안 1차 거르기) | 직접 학습 |
 | 📚 **RAG** | multilingual-e5-base · JSONL 사례 코퍼스 (유사 사기/정상 사례 검색) | 직접 개발 · 오픈소스 모델 |
 | 🧠 **LLM** | Claude Haiku 4.5 (코디세이 AI 게이트웨이) · GPT · Gemini 백업 | 외부 API |
 
@@ -140,21 +140,27 @@ flowchart LR
 
 ```
 26codyssey_hackerton/
-├── smishing/                    # 🤖 AI 탐지 엔진 (NCP GPU 서버)
-│   ├── judge/                   #   판정 로직
-│   │   ├── judge.py             #     분류 모델 판정
-│   │   ├── judge_rag.py         #     RAG + LLM 판정 (유사 사례 근거)
-│   │   ├── cody_api.py          #     코디세이 AI 게이트웨이 연동
-│   │   ├── build_unified.py     #     데이터셋 통합
-│   │   └── samples/             #     테스트 샘플 (문자 / 통화 음성)
-│   └── model/                   #   모델 학습 · 평가
-│       ├── bench_stt.py         #     STT 벤치마크
-│       ├── eval_voice.py        #     통화 사기 판정 평가
-│       └── out/                 #     평가 지표 · RAG 사례 데이터
+├── Codyssey-GiantKiller-BE/     # 🖥️ 백엔드 — FastAPI · PostgreSQL (회원·가족·초대·알림 API)
 │
-├── Codyssey-GiantKiller-BE/     # 🖥️ 백엔드 (FastAPI · PostgreSQL)
+├── Codyssey-GiantKiller-demo/   # 📱 서비스 본체 — AI 서버 + Android 앱
+│   ├── ai/                      #   AI 서버 (규칙 → BERT → LLM 판정, 통화 받아쓰기, 화자 분리)
+│   ├── android/                 #   Android 앱 (부모님 폰 · 자녀 폰, 폰 안 경량 모델)
+│   ├── deploy/                  #   AI 서버 · Whisper 서버 실행 스크립트
+│   ├── docs/                    #   AI_API.md · LIGHT_MODEL.md · RESULTS.md
+│   ├── scripts/ · tests/        #   경량 모델 학습 · 테스트
+│   └── samples/                 #   시험용 문자 · 통화 샘플
 │
-└── Codyssey-GiantKiller-demo/   # 📱 Android 앱 (Kotlin)
+└── smishing/                    # 🤖 AI 모델 연구 — 데이터 통합 · 분류기 학습 · RAG 판정 실험
+    ├── data/                    #   데이터셋 통합 스크립트 (원본 데이터는 미포함)
+    ├── judge/                   #   분류 모델 · RAG + LLM 판정
+    └── model/                   #   학습 · 평가 · STT 벤치마크
+```
+
+**서비스 연결 흐름**
+
+```
+📱 Android 앱 ──/api/v1/...──▶ 🖥️ BE (FastAPI) ──AIClient──▶ 🤖 AI 서버 :8100 ──▶ 🎙️ Whisper 서버 (GPU)
+   └ 폰 안 경량 모델로 1차 거르기          └ PostgreSQL               └ 규칙 → BERT → LLM
 ```
 
 ## 🚀 실행 방법
@@ -164,9 +170,9 @@ flowchart LR
 | 구성 요소 | 필요한 것 |
 |---|---|
 | 백엔드 | Docker · Docker Compose |
-| AI 판정 엔진 | Python 3.12+ · (권장) NVIDIA GPU + CUDA |
+| AI 서버 · 모델 | Python 3.12+ · (권장) NVIDIA GPU + CUDA |
 | Android 앱 | Android Studio (AGP 9.0.1) · Android 기기 또는 에뮬레이터 |
-| LLM 판정 | 코디세이 AI 게이트웨이 API 키 |
+| LLM 판정 (선택) | 코디세이 AI 게이트웨이 API 키 — **없어도 키워드 규칙으로 동작** |
 
 ```bash
 git clone https://github.com/jha21vvv/26codyssey_hackerton.git
@@ -182,12 +188,10 @@ cd Codyssey-GiantKiller-BE
 cp .env.example .env
 ```
 
-`.env`에 아래 값을 채웁니다.
-
 | 변수 | 필수 | 설명 |
 |---|:---:|---|
 | DB 접속 정보 | ✅ | `.env.example`에 적힌 항목 그대로 입력 |
-| `AUTH_SECRET` | ✅ | JWT 서명 키, **32자 이상**. 아래 명령으로 생성 |
+| `AUTH_SECRET` | ✅ | JWT 서명 키, **32자 이상** — 아래 명령으로 생성 |
 | `AUTH_TOKEN_LIFETIME_SECONDS` | | JWT 유효 시간 (기본 3600초) |
 | `INVITATION_BASE_URL` | | 앱 초대 화면 URL prefix (예: `https://app.example.com/invite`) |
 
@@ -204,65 +208,96 @@ docker compose run --rm api alembic upgrade head
 docker compose up -d api
 ```
 
-**③ 확인** — Swagger UI: `/docs` · 상태 확인: `/health` (포트는 `compose.yaml` 참고)
+**③ 확인** — Swagger UI `/docs` · 상태 확인 `/health` (포트는 `compose.yaml` 참고)
 
-> 회원·가족·초대 API 명세: [`docs/SPEC/SPEC-001.md`](Codyssey-GiantKiller-BE/docs/SPEC/SPEC-001.md)
+> API 명세: [`docs/SPEC/SPEC-001.md`](Codyssey-GiantKiller-BE/docs/SPEC/SPEC-001.md)
 
-### 2. AI 판정 엔진 — `smishing`
+### 2. AI 서버 — `Codyssey-GiantKiller-demo`
 
-**① 설치**
+BE의 `AIClient`가 호출하는 판정 서버입니다.
+
+**① 설치 · 환경 설정**
+
+```bash
+cd Codyssey-GiantKiller-demo
+python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
+.venv/bin/pip install -r requirements-gpu.txt   # (선택) BERT 분류기를 쓸 때
+cp .env.example .env
+```
+
+| 변수 (`.env`) | 쓰임 |
+|---|---|
+| `CODY_CLAUDE_KEY` / `CODY_GPT_KEY` | 코디세이 게이트웨이 LLM (`CODY_MODEL` 기본 `claude-haiku-4`) |
+| `CLASSIFIER_DIR` | BERT 분류기 폴더 — 아래 [모델 가중치](#-모델-가중치)를 받아 압축 푼 경로 |
+| `WHISPER_API_URL` · `WHISPER_MODEL` | 받아쓰기 서버 주소 · 모델 (기본 `large-v3`). 없으면 로컬 faster-whisper 사용 |
+| `WHISPER_DIARIZE=1` + `HF_TOKEN` | pyannote 화자 분리 → `상대:` / `부모님:` 구분 |
+| *(아무것도 없음)* | 키워드 규칙만으로 동작 · 녹음은 `.txt` 대본만 |
+
+**② 실행**
+
+```bash
+bash deploy/run.sh        # → 0.0.0.0:8100
+```
+
+| 엔드포인트 | 입력 | 응답 |
+|---|---|---|
+| `POST /v1/alerts/analyze` | `{"text": "..."}` | `classification` · `requires_attention` · `risk_level` · `summary` |
+| `POST /v1/calls/analyze` | 통화 녹음 파일 | 위 항목 + `instructions[{instruction_type, description}]` |
+
+**판정 순서** (`ai/analyzer.py`): ① 키워드 규칙 → ② BERT 분류기 → ③ LLM → ④ 안전망
+LLM이 실패하거나 엉뚱하게 답해도 '안전'으로 넘기지 않고 규칙으로 대신합니다.
+
+> 상세: [`docs/AI_API.md`](Codyssey-GiantKiller-demo/docs/AI_API.md) · 평가 결과: [`docs/RESULTS.md`](Codyssey-GiantKiller-demo/docs/RESULTS.md)
+
+### 3. Android 앱 — `Codyssey-GiantKiller-demo/android`
+
+1. Android Studio에서 `Codyssey-GiantKiller-demo/android` 폴더를 엽니다
+2. Gradle Sync 후 기기 또는 에뮬레이터를 연결하고 **Run ▶** (명령줄: `./gradlew assembleDebug`)
+3. 백엔드 서버 주소 등 앱 설정은 [`android/README.md`](Codyssey-GiantKiller-demo/android/README.md) 참고
+
+**📱 폰 안 경량 모델** — 문자가 오면 폰 안에서 먼저 걸러, 의심 문자만 BE(`POST /api/v1/alerts/check`)로 보냅니다. 평범한 문자는 폰 밖으로 나가지 않습니다.
+
+| 항목 | 내용 |
+|---|---|
+| 모델 | 로지스틱 회귀 · 2·3글자 조각 → FNV-1a 해시 (65,536칸) |
+| 크기 · 속도 | **64KB** (1바이트 양자화) · 판단 **1ms 미만** |
+| 성능 (학습에 안 쓴 문자) | 사기 **99%** 탐지 · 정상 오탐 **0%** |
+| 위치 | `android/app/src/main/assets/light_model.bin` · 학습 `scripts/train_light.py` |
+
+> 상세: [`docs/LIGHT_MODEL.md`](Codyssey-GiantKiller-demo/docs/LIGHT_MODEL.md)
+
+### 4. AI 모델 연구 — `smishing` (선택)
+
+분류기 학습 · RAG 판정 실험 코드입니다.
 
 ```bash
 cd smishing
 python3 -m venv .venv && source .venv/bin/activate
-pip install -r model/requirements.txt
-```
+pip install -r model/requirements.txt          # GPU 서버는 CUDA용 PyTorch를 먼저 설치
+cp judge/.env.example judge/.env               # CODY_CLAUDE_KEY 등 입력
+cp model/.env.example model/.env               # CODY_GPT_KEY, CODY_CLAUDE_KEY
 
-> GPU 서버에서는 CUDA 버전에 맞는 PyTorch를 먼저 설치하세요.
-
-**② 환경 설정** — API 키는 LLM 판정에만 필요합니다.
-
-```bash
-cp judge/.env.example judge/.env
-cp model/.env.example model/.env
-```
-
-| 변수 | 설명 |
-|---|---|
-| `CODY_CLAUDE_KEY` | 코디세이 게이트웨이 Claude 키 |
-| `CODY_GPT_KEY` | 코디세이 게이트웨이 GPT 키 (백업) |
-| `CODY_BASE_URL` | 선택, 기본값 `https://copa.codyssey.kr` |
-
-**③ 모델 가중치 받기** — 용량 문제로 저장소에 포함하지 않았습니다.
-
-> 📦 다운로드: **[모델 가중치 링크](#)** → 압축을 풀어 `judge/models/base/`, `judge/models/large/`에 넣습니다.
-
-**④ 실행**
-
-```bash
 # 분류 모델(KLUE BERT/RoBERTa)로 문자 판정
 python judge/judge.py judge/samples/sms_scam.txt --sms --model base
-python judge/judge.py judge/samples/sms_ok.txt   --sms --model large
 
 # RAG(유사 사례 검색) + LLM 판정 → 결과는 judge/out/
 python judge/judge_rag.py judge/samples/sms_scam.txt --sms
-
-# 통화 전사본 판정 (--sms 없이 실행)
-python judge/judge.py 통화전사본.txt --model base
-
-# 게이트웨이 연결 확인 (사용 가능한 모델 목록)
-python judge/cody_api.py --models
 ```
 
-> 모델 학습 · 평가 · 통화 전사(STT) 상세는 [`smishing/model/README.md`](smishing/model/README.md) 참고
+> 학습 · 평가 · STT 상세: [`smishing/model/README.md`](smishing/model/README.md)
 
-### 3. Android 앱 — `Codyssey-GiantKiller-demo`
+### 📦 모델 가중치
 
-1. Android Studio에서 `Codyssey-GiantKiller-demo` 폴더를 엽니다
-2. Gradle Sync가 끝나면 기기 또는 에뮬레이터를 연결하고 **Run ▶**
-3. 명령줄 빌드: `./gradlew assembleDebug`
+BERT/RoBERTa 분류기 가중치는 용량 문제로 저장소에 포함하지 않았습니다.
 
-> 앱이 연결할 백엔드 서버 주소 설정은 앱 폴더의 문서를 참고하세요.
+> **[judge_models.tar.gz (Google Drive, 1.6GB)](https://drive.google.com/file/d/12Irdr8YtsR6JIxRhO-SVOst40jkE1wpB/view?usp=drive_link)**
+
+```bash
+# smishing/judge 에서 압축 해제 → judge/models/base/, judge/models/large/
+cd smishing/judge && tar xzf ~/Downloads/judge_models.tar.gz
+```
+
+AI 서버에서 쓰려면 `.env`의 `CLASSIFIER_DIR`을 압축 푼 `models/base` (또는 `models/large`) 경로로 지정합니다.
 
 ## 📊 데이터
 
@@ -326,3 +361,4 @@ python judge/cody_api.py --models
 <sub>Made with ☕ by TEAM 자이언트킬러 · Codyssey AI Hackathon 2026</sub>
 
 </div>
+
