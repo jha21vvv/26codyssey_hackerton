@@ -60,7 +60,9 @@ class JikimiMessagingService : FirebaseMessagingService() {
             // 부모님 폰: 가족 확인 결과는 직접 확인해 띄운다(Reactions.watch). 통화 분석 경고(CALL_WARNING)만 받아 경고창
             // (같은 통화를 업로드 응답으로 이미 띄웠으면 Reactions 가 event_id 로 한 번만 띄운다)
             // 통화 업로드 응답을 기다리는 중이면 보류 → 응답(요약 포함)이 먼저 뜨게 (CallWarnings)
-            if (data["push_type"] == "CALL_WARNING" && !CallWarnings.hold(data["event_id"])) Reactions.call(this, JSONObject(), data["event_id"])
+            // 경고창 권한이 없으면 data 의 title·body 로 상단바 알림 (BE PR #15: CALL_WARNING 은 data 만, high)
+            if (data["push_type"] == "CALL_WARNING" && !CallWarnings.hold(data["event_id"], data["title"], data["body"]))
+                Reactions.call(this, JSONObject(), data["event_id"], data["title"], data["body"])
             return
         }
         Notifier.child(this, message.notification?.title ?: "부모님 지킴이", message.notification?.body ?: "",

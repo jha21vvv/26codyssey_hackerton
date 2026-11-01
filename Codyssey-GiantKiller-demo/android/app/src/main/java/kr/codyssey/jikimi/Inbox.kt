@@ -98,10 +98,21 @@ object Reactions {
         }
     }
 
-    fun call(ctx: Context, result: JSONObject, eventId: String? = null) {
+    // 통화 경고 상단바 알림의 기본 문구 (BE app/services/push.py CALL_WARNING 과 같게)
+    private const val CALL_TITLE = "전화 내용이 위험해 보여요"
+    private const val CALL_BODY = "전화로 시킨 일은 멈춰주세요. 돈을 보내거나 앱을 설치하지 마세요."
+
+    /** title·body: CALL_WARNING 푸시 data 의 문구. "다른 앱 위에 표시" 권한이 없어 경고창을 못 띄우면 상단바 알림에 쓴다 */
+    fun call(ctx: Context, result: JSONObject, eventId: String? = null, title: String? = null, body: String? = null) {
         if (!firstTime(ctx, eventId)) return
+        val summary = result.optString("summary").takeIf { it.isNotEmpty() && it != "null" }
+        if (!Overlay.canShow(ctx)) {
+            Notifier.callWarning(ctx, eventId, title?.takeIf { it.isNotBlank() } ?: CALL_TITLE,
+                body?.takeIf { it.isNotBlank() } ?: listOfNotNull(summary, CALL_BODY).joinToString(" "))
+            return
+        }
         Overlay.show(ctx, "전화로 시킨 일은 멈춰주세요",
-            (result.optString("summary").takeIf { it.isNotEmpty() && it != "null" } ?: "사기로 의심되는 통화예요.") +
+            (summary ?: "사기로 의심되는 통화예요.") +
                 "\n\n돈을 보내거나 앱을 설치하지 마세요.\n개인정보를 알려주지 마세요.\n\n자녀에게 알려드렸어요.", "알겠어요")
     }
 
@@ -159,22 +170,22 @@ object Reactions {
  */
 object CallWarnings {
     private var uploading = 0
-    private val held = mutableListOf<String>()
+    private val held = linkedMapOf<String, Pair<String?, String?>>() // event_id → 푸시 문구 (title, body)
 
     @Synchronized fun begin() { uploading++ }
 
     /** 업로드 중이면 보류하고 true (event_id 가 없으면 맞춰 볼 수 없어 바로 띄우게 false) */
-    @Synchronized fun hold(eventId: String?): Boolean {
+    @Synchronized fun hold(eventId: String?, title: String? = null, body: String? = null): Boolean {
         if (uploading == 0 || eventId.isNullOrEmpty()) return false
-        held += eventId
+        held[eventId] = title to body
         return true
     }
 
-    /** 업로드 하나가 끝남 → 더 기다리는 업로드가 없으면 보류한 것을 돌려준다 */
-    @Synchronized fun end(): List<String> {
+    /** 업로드 하나가 끝남 → 더 기다리는 업로드가 없으면 보류한 것을 (event_id, title, body) 로 돌려준다 */
+    @Synchronized fun end(): List<Triple<String, String?, String?>> {
         uploading = (uploading - 1).coerceAtLeast(0)
         if (uploading > 0) return emptyList()
-        return held.toList().also { held.clear() }
+        return held.map { (id, tb) -> Triple(id, tb.first, tb.second) }.also { held.clear() }
     }
 }
 

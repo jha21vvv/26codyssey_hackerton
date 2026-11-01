@@ -2,7 +2,9 @@ package kr.codyssey.jikimi
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.PixelFormat
 import android.util.TypedValue
@@ -34,7 +36,10 @@ object Overlay {
     }
 
     private fun draw(ctx: Context, title: String, text: String, button: String) {
-        if (!canShow(ctx)) return
+        if (!canShow(ctx)) { // "다른 앱 위에 표시" 권한이 없으면 같은 제목·본문으로 상단바 알림 (같은 내용이면 같은 알림을 덮어씀)
+            Notifier.warning(ctx, (title + text).hashCode(), title, text)
+            return
+        }
         if (showing) { queue.add(title to text); return }
         showing = true
         val app = ctx.applicationContext
@@ -134,9 +139,15 @@ object InfoCard {
     private var current: android.view.View? = null
     private var currentKey: String? = null // 지금 카드가 어느 가족 확인 건인지 (결과가 오면 같은 건만 닫는다)
 
-    /** stage: 안심(초록, 기본) · 주의(노랑, 가족 확인 중처럼 잠시 멈춰야 할 때) — 팀원 A안의 단계 색 그대로 */
-    /** key: 가족 확인 건 ID. 같은 건의 결과가 오면 dismiss(key) 로 이 카드를 닫는다 */
+    /**
+     * stage: 안심(초록, 기본) · 주의(노랑, 가족 확인 중처럼 잠시 멈춰야 할 때) — 팀원 A안의 단계 색 그대로
+     * key: 가족 확인 건 ID. 같은 건의 결과가 오면 dismiss(key) 로 이 카드를 닫는다
+     */
     fun show(ctx: Context, title: String, text: String, stage: Ui.Stage = Ui.Stage.SAFE, key: String? = null) {
+        if (!Overlay.canShow(ctx)) { // 권한이 없으면 카드 대신 상단바 알림. 같은 가족 확인 건(key)은 같은 알림 자리를 덮어쓴다
+            Notifier.warning(ctx, (key ?: title).hashCode(), title, text, Notifier.CH_EXPLAIN)
+            return
+        }
         main.post {
             val before = current
             draw(ctx, title, text, stage)
@@ -272,6 +283,31 @@ object Notifier {
             .build()
         ctx.getSystemService(NotificationManager::class.java).notify(id, n)
     }
+
+    /**
+     * 부모님 폰 경고를 상단바 알림으로 ("다른 앱 위에 표시" 권한이 없어 경고창·안내 카드를 못 띄울 때). 제목·본문은 경고창 그대로.
+     * id 가 같으면 같은 알림을 덮어쓴다. 누르면 앱이 열린다
+     */
+    fun warning(ctx: Context, id: Int, title: String, text: String, channel: String = CH_URGENT) {
+        channels(ctx)
+        val open = PendingIntent.getActivity(ctx, 0,
+            Intent(ctx, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK),
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
+        val n = Notification.Builder(ctx, channel)
+            .setSmallIcon(android.R.drawable.ic_lock_lock)
+            .setContentTitle(title)
+            .setContentText(text.replace("\n", " "))
+            .setStyle(Notification.BigTextStyle().bigText(text))
+            .setCategory(if (channel == CH_URGENT) Notification.CATEGORY_ALARM else Notification.CATEGORY_STATUS)
+            .setContentIntent(open)
+            .setAutoCancel(true)
+            .build()
+        runCatching { ctx.getSystemService(NotificationManager::class.java).notify(id, n) }
+    }
+
+    /** 통화 경고 (CALL_WARNING 문구). 같은 사건이면 같은 알림 자리 */
+    fun callWarning(ctx: Context, eventId: String?, title: String, text: String) =
+        warning(ctx, (eventId ?: title).hashCode(), title, text)
 
     fun service(ctx: Context): Notification =
         Notification.Builder(ctx, CH_SERVICE)

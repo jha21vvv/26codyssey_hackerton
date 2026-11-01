@@ -171,7 +171,7 @@ class GuardService : Service() {
             r.optJSONObject("result")?.takeIf { it.optBoolean("requires_attention") }?.let { Reactions.call(this, it, r.optString("event_id")) }
         } finally {
             // 성공이면 같은 사건은 위에서 떠서 firstTime 이 막고, 실패·시간 초과·예외면 보류한 푸시가 기본 문구로 뜬다
-            CallWarnings.end().forEach { Reactions.call(this, JSONObject(), it) }
+            CallWarnings.end().forEach { (id, title, body) -> Reactions.call(this, JSONObject(), id, title, body) }
         }
     }
 }
