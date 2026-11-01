@@ -57,12 +57,12 @@
 
 ## ⚔️ 차별점 — 흐름 전체를 본다
 
-> **기존 서비스는 통화 한 통을, 머꼬는 사기 흐름 전체를 본다**
+> **에이닷은 통화 한 통을, 머꼬는 사기 흐름 전체를 본다**
 
-| | 기존 통신사 서비스 | 🐱 **머꼬** |
+| | SKT 에이닷 | 🐱 **머꼬** |
 |---|---|---|
 | **판단 범위** | 통화 한 통씩 판단 | **문자 → 통화 → 앱 설치** 흐름 추적 |
-| **사용 조건** | 특정 통신사 가입자만 | **통신사 무관**, 앱 하나로 누구나 |
+| **사용 조건** | SKT 폰에서만 — 다른 통신사를 쓰는 부모님은 보호받지 못함 | **통신사 무관**, 앱 하나로 누구나 |
 | **가족 연결** | ❌ | **진짜 자녀에게 바로 확인** — 자녀 사칭 문자가 오면 등록된 진짜 자녀에게 알림 |
 
 ## 👨‍👩‍👧 목표 사용자 — 부모님과 자녀, 함께 쓴다
@@ -79,7 +79,7 @@
 |:---:|---|---|
 | 🔔 | **알림 자동 확인** | 문자 알림을 자동으로 감지하고, 폰 안의 경량 모델이 1차 판정 · 개인정보는 폰에서 먼저 가림 |
 | 👨‍👧 | **자녀 사칭 즉시 확인** | "엄마 폰 고장났어" 같은 문자가 오면 등록된 **진짜 자녀**에게 "이 문자 직접 보냈나요?" 확인 요청 |
-| 🎙️ | **통화 녹음 분석** | 통화 음성을 텍스트로 변환(STT)하고 화자를 분리해 검찰·기관 사칭 등 사기 패턴 탐지 |
+| 🎙️ | **통화 녹음 분석** | 통화 음성을 텍스트로 변환(STT)하고, 유사 사기 사례 검색 후 LLM이 검찰·기관 사칭 등 사기 패턴 판정 |
 | 🛑 | **원격제어 앱 설치 멈춤** | 의심 통화 뒤 원격제어 앱 설치가 감지되면 "이 앱을 열지 마세요" 경고 + 가족에게 긴급 알림 |
 | 🎨 | **유니버설 컬러 UI** | 🟢 안전 · 🟡 주의 · 🔴 위험 — 고령자(수정체 황변)와 색약자 모두 구별되는 **CUD 색 조합** |
 
@@ -96,46 +96,52 @@
 
 ## 🏗️ 시스템 구성
 
+> 범례: **[직접]** 직접 개발·구축 · **[외부]** 외부 API·오픈소스
+
 ```mermaid
 flowchart LR
-    P((👵 부모님)) <-->|질문| APP
+    P((👵 부모님<br/>사용자)) <-->|질문| APP
     G((👩 보호자<br/>자녀)) <-->|알림| APP
 
-    subgraph APP[📱 Android App]
+    subgraph APP["📱 Android App [직접]"]
         A1[문자·통화·앱 설치 이벤트 감지<br/>개인정보 1차 마스킹]
-        A2[폰 안 경량 모델 1차 판정]
-        A3[위험 단계 판정<br/>문자 → 통화 → 앱 설치]
+        A2[폰 안 경량 모델로 1차 판정<br/>직접 학습]
+        A3[위험 단계 판정<br/>문자 → 통화 → 앱 설치 단계마다 위험도 판정]
+        A4[가족 확인: 위험 시 FCM 알림 → 가족이 확인]
+        A5[보호자 자녀: 가족 보안 화면 · 위험 알림 수신]
     end
 
-    APP <-->|텍스트·음성파일| WAS
+    APP -->|텍스트 · 음성파일| WAS
+    WAS -->|위험 알림| APP
 
-    subgraph WAS[🖥️ Main Server · FastAPI]
-        W1[앱 요청 API · 회원/가족]
-        W2[STT · 사례 검색 후 LLM 판정]
-        W3[보호자 위험 알림<br/>Firebase Admin → FCM]
+    subgraph WAS["🖥️ Main Server · WAS [직접] — FastAPI · Uvicorn · Pydantic · Docker Compose · Cloudflare Tunnel"]
+        W1[앱 요청 API · 회원/가족<br/>문자는 폰에서 가린 뒤 전송]
+        W2[서버: STT · 사례 검색 후 LLM 판정]
+        W3[RAG: 유사 사기 사례를 프롬프트에 넣어 LLM 호출]
+        W4[보호자 실시간 위험 알림 발송<br/>Firebase Admin → FCM]
     end
 
-    WAS <--> DB[(🐘 PostgreSQL 18<br/>사용자·가족·초대)]
-    WAS <-->|같은 프로그램| STT[🎙️ GPU 서버 STT<br/>faster-whisper large-v3 · CUDA fp16]
-    WAS <-->|임베딩 검색| RAG[📚 RAG 검색 서버<br/>multilingual-e5-base<br/>금감원 사기 사례]
-    WAS <-->|프롬프트 판정| LLM[🧠 코디세이 AI 게이트웨이<br/>OpenAI GPT-5.4 · Claude Haiku]
+    WAS <--> DB[("🐘 DB [외부]<br/>PostgreSQL 18 · Docker<br/>사용자·가족·초대 데이터")]
+    WAS <-->|같은 프로그램| STT["🎙️ GPU 서버 안 STT [직접 구축]<br/>faster-whisper large-v3 (CT2, fp16)<br/>CUDA · cuDNN · PyTorch<br/>KLUE BERT·RoBERTa 분류기는 실험 단계"]
+    WAS <-->|임베딩 검색| RAG["📚 RAG 검색 · 사례 코퍼스 [직접 개발]<br/>multilingual-e5-base · sentence-transformers<br/>금감원 실제 사기 사례 → 임베딩 → 유사도 검색"]
+    WAS <-->|프롬프트 판정| LLM["🧠 External LLM API [외부]<br/>OpenAI GPT-5.4 · Claude Haiku<br/>코디세이 AI 게이트웨이 · 검색 사례 + 입력 → JSON 판정"]
 ```
 
-**판정 흐름**: ① 폰 1차 판정 → ② 애매하면 서버로 → ③ STT · 사례 검색 → ④ LLM 판정 → ⑤ 위험 시 가족에게 FCM 알림 → 가족 확인
+**판정 흐름**: ① 폰 1차 판정 → ② 애매하면 서버 → ③ STT · 사례 검색 → ④ LLM 판정 → ⑤ 위험 시 가족에게 FCM 알림 → 가족 확인
+
+> STT는 별도 서버가 아니라 **Main Server와 같은 프로그램 안에서** GPU로 동작합니다. KLUE 분류기는 실험 단계입니다.
 
 ## 🛠️ 기술 스택
 
 | 영역 | 기술 | 구분 |
 |---|---|---|
-| 📱 **App** | Android · Kotlin · AGP 9.0.1 · FCM 알림 수신 | 직접 개발 |
-| 📲 **경량 모델** | 로지스틱 회귀 · FNV-1a 해시 · 64KB (폰 안 1차 거르기) | 직접 학습 |
-| 🖥️ **Server** | FastAPI · Python 3.14 · SQLAlchemy async · Alembic · fastapi-users · asyncpg | 직접 개발 · 오픈소스 |
-| 🐘 **DB** | PostgreSQL 18 (Docker) | 오픈소스 |
-| ☁️ **Infra** | NCP L4 GPU 서버 (24GB) · Docker Compose · Cloudflare Tunnel · FCM | 외부 인프라 |
-| 🎙️ **STT** | faster-whisper large-v3 (CT2, fp16) · PyAV 디코딩 · pyannote 화자 분리 | 직접 구축 · 오픈소스 모델 |
-| 🤖 **분류기** | KLUE BERT · RoBERTa (팀 실험용) | 직접 학습 |
-| 📚 **RAG** | multilingual-e5-base · sentence-transformers · 금감원 · KsponSpeech · 유튜브 사례 | 직접 개발 · 오픈소스 모델 |
-| 🧠 **LLM** | OpenAI GPT-5.4 · Claude Haiku (코디세이 AI 게이트웨이) → JSON 판정 | 외부 API |
+| 📱 **APP** 앱 | Android · Kotlin · AGP 9.0.1 · FCM 알림 수신 · 폰 안 경량 모델 (직접 학습) | 직접 개발 |
+| 🖥️ **SERVER** 백엔드 · WAS | FastAPI · Python 3.14 · SQLAlchemy async · Alembic · fastapi-users 인증 · asyncpg | 직접 개발 · 오픈소스 |
+| 🐘 **DB** 데이터베이스 | PostgreSQL 18 (Docker) · 사용자 · 가족 · 초대 데이터 | 오픈소스 |
+| ☁️ **INFRA** 인프라 · 알림 | NCP L4 GPU 서버 (24GB) · Docker Compose · FCM 알림 · Cloudflare Tunnel | 외부 인프라 · 서비스 |
+| 🎙️ **STT** 음성 인식 · 분류 | faster-whisper large-v3 (CT2, fp16) · PyAV 디코딩 · 문자는 폰에서 가림 · 분류기: KLUE BERT · RoBERTa (팀 실험용) | 직접 구축 · 오픈소스 모델 |
+| 📚 **RAG** 임베딩 검색 | multilingual-e5-base · sentence-transformers · 유사 사기/정상 사례 검색 → LLM 근거 · 데이터: 금감원 · KsponSpeech · 유튜브 크롤링 | 직접 개발 · 오픈소스 모델 |
+| 🧠 **LLM** 판정 · 설명 | OpenAI GPT-5.4 · Claude Haiku (코디세이 AI 게이트웨이) · 검색 사례 + 입력 → JSON 판정 | 외부 API |
 
 <sub>개발·협업 환경: Android Studio · GitHub · Figma · Notion · Google Meet (Gemini 회의록) · Grok Bot</sub>
 
@@ -145,10 +151,10 @@ flowchart LR
 26codyssey_hackerton/
 ├── Codyssey-GiantKiller-BE/     # 🖥️ 백엔드 — FastAPI · PostgreSQL (회원·가족·초대·알림 API)
 │
-├── Codyssey-GiantKiller-demo/   # 📱 서비스 본체 — AI 서버 + Android 앱
-│   ├── ai/                      #   AI 서버 (규칙 → BERT → LLM 판정, 통화 받아쓰기, 화자 분리)
+├── Codyssey-GiantKiller-demo/   # 📱 서비스 본체 — AI 판정 코드 + Android 앱
+│   ├── ai/                      #   AI 판정 (STT · RAG 사례 검색 · LLM 판정)
 │   ├── android/                 #   Android 앱 (부모님 폰 · 자녀 폰, 폰 안 경량 모델)
-│   ├── deploy/                  #   AI 서버 · Whisper 서버 실행 스크립트
+│   ├── deploy/                  #   실행 스크립트
 │   ├── docs/                    #   AI_API.md · LIGHT_MODEL.md · RESULTS.md
 │   ├── scripts/ · tests/        #   경량 모델 학습 · 테스트
 │   └── samples/                 #   시험용 문자 · 통화 샘플
@@ -159,13 +165,6 @@ flowchart LR
     └── model/                   #   학습 · 평가 · STT 벤치마크
 ```
 
-**서비스 연결 흐름**
-
-```
-📱 Android 앱 ──/api/v1/...──▶ 🖥️ BE (FastAPI) ──AIClient──▶ 🤖 AI 서버 :8100 ──▶ 🎙️ Whisper 서버 (GPU)
-   └ 폰 안 경량 모델로 1차 거르기          └ PostgreSQL               └ 규칙 → BERT → LLM
-```
-
 ## 🚀 실행 방법
 
 ### 0. 준비물
@@ -173,7 +172,7 @@ flowchart LR
 | 구성 요소 | 필요한 것 |
 |---|---|
 | 백엔드 | Docker · Docker Compose |
-| AI 서버 · 모델 | Python 3.12+ · (권장) NVIDIA GPU + CUDA |
+| AI 판정 · 모델 | Python 3.12+ · (권장) NVIDIA GPU + CUDA |
 | Android 앱 | Android Studio (AGP 9.0.1) · Android 기기 또는 에뮬레이터 |
 | LLM 판정 (선택) | 코디세이 AI 게이트웨이 API 키 — **없어도 키워드 규칙으로 동작** |
 
@@ -215,9 +214,9 @@ docker compose up -d api
 
 > API 명세: [`docs/SPEC/SPEC-001.md`](Codyssey-GiantKiller-BE/docs/SPEC/SPEC-001.md)
 
-### 2. AI 서버 — `Codyssey-GiantKiller-demo`
+### 2. AI 판정 (STT · RAG · LLM) — `Codyssey-GiantKiller-demo`
 
-BE의 `AIClient`가 호출하는 판정 서버입니다.
+BE의 `AIClient`가 호출하는 판정 코드입니다. 백엔드와 **같은 GPU 서버**에서 실행하며, STT도 이 프로그램 안에서 동작합니다.
 
 **① 설치 · 환경 설정**
 
@@ -232,8 +231,7 @@ cp .env.example .env
 |---|---|
 | `CODY_CLAUDE_KEY` / `CODY_GPT_KEY` | 코디세이 게이트웨이 LLM (`CODY_MODEL` 기본 `claude-haiku-4`) |
 | `CLASSIFIER_DIR` | BERT 분류기 폴더 — 아래 [모델 가중치](#-모델-가중치)를 받아 압축 푼 경로 |
-| `WHISPER_API_URL` · `WHISPER_MODEL` | 받아쓰기 서버 주소 · 모델 (기본 `large-v3`). 없으면 로컬 faster-whisper 사용 |
-| `WHISPER_DIARIZE=1` + `HF_TOKEN` | pyannote 화자 분리 → `상대:` / `부모님:` 구분 |
+| `WHISPER_MODEL` | 받아쓰기 모델 (기본 `large-v3`) — 같은 프로그램 안 faster-whisper로 동작 |
 | *(아무것도 없음)* | 키워드 규칙만으로 동작 · 녹음은 `.txt` 대본만 |
 
 **② 실행**
@@ -247,7 +245,7 @@ bash deploy/run.sh        # → 0.0.0.0:8100
 | `POST /v1/alerts/analyze` | `{"text": "..."}` | `classification` · `requires_attention` · `risk_level` · `summary` |
 | `POST /v1/calls/analyze` | 통화 녹음 파일 | 위 항목 + `instructions[{instruction_type, description}]` |
 
-**판정 순서** (`ai/analyzer.py`): ① 키워드 규칙 → ② BERT 분류기 → ③ LLM → ④ 안전망
+**판정 순서** (`ai/analyzer.py`): ① 키워드 규칙 → ② (실험 단계) BERT 분류기 → ③ 사례 검색 + LLM → ④ 안전망
 LLM이 실패하거나 엉뚱하게 답해도 '안전'으로 넘기지 않고 규칙으로 대신합니다.
 
 > 상세: [`docs/AI_API.md`](Codyssey-GiantKiller-demo/docs/AI_API.md) · 평가 결과: [`docs/RESULTS.md`](Codyssey-GiantKiller-demo/docs/RESULTS.md)
@@ -300,7 +298,7 @@ BERT/RoBERTa 분류기 가중치는 용량 문제로 저장소에 포함하지 �
 cd smishing/judge && tar xzf ~/Downloads/judge_models.tar.gz
 ```
 
-AI 서버에서 쓰려면 `.env`의 `CLASSIFIER_DIR`을 압축 푼 `models/base` (또는 `models/large`) 경로로 지정합니다.
+AI 판정 코드에서 쓰려면 `.env`의 `CLASSIFIER_DIR`을 압축 푼 `models/base` (또는 `models/large`) 경로로 지정합니다.
 
 ## 📊 데이터
 
@@ -332,22 +330,28 @@ AI 서버에서 쓰려면 `.env`의 `CLASSIFIER_DIR`을 압축 푼 `models/base`
 | 부모님 폰 + 자녀 앱 연동 | 스미싱 · 스팸 필터 연동 | 장애인 · 다문화 가정 등 취약층 |
 | 통신사 무관, 앱 하나로 설치 | 신고 데이터로 RAG 사례 확대 | 공공 신고 데이터와 연계 |
 
-## 📜 오픈소스 · 외부 자원
+## 📜 외부 자원 활용 내역
 
 | 구분 | 명칭 | 용도 | 라이선스 |
 |---|---|---|---|
 | 오픈소스 | FastAPI · Uvicorn · Pydantic · HTTPX · fastapi-users · SQLAlchemy · Alembic · asyncpg | 백엔드 · AI 서버 API · 인증 · DB 접근 | MIT · BSD-3-Clause · Apache-2.0 |
-| 오픈소스 | python-multipart · pydantic-settings · pytest · ruff · PostgreSQL 18 · Docker · cloudflared | 업로드 · 설정 · 테스트 · DB · 배포 · 터널 | Apache-2.0 · MIT · PostgreSQL |
+| 오픈소스 | python-multipart · pydantic-settings · pytest · ruff · PostgreSQL 18 · Docker (Ubuntu 24.04) · cloudflared | 업로드 · 설정 · 테스트 · DB · 배포 · 터널 | Apache-2.0 · MIT · PostgreSQL |
 | 오픈소스 | faster-whisper 1.2.1 · CTranslate2 · PyAV 16 · firebase-admin 7.7 | 받아쓰기 · 오디오 디코딩 · FCM 발송 | MIT · BSD-3-Clause · Apache-2.0 |
-| 오픈소스 · SDK | PyTorch 2.11 · Transformers · sentence-transformers · scikit-learn · NumPy · CUDA | RAG 검색 서버 · 모델 개발 · GPU 추론 | BSD-3 · Apache-2.0 · NVIDIA CUDA EULA |
-| 오픈소스 | Kotlin · firebase-messaging 26.0.1 · Material Icons · AGP 9.0.1 · JUnit 4.13.2 | 앱 빌드 · FCM 수신 · 아이콘 · 단위 테스트 | Apache-2.0 · EPL-1.0 |
-| 모델 | Systran/faster-whisper-large-v3 · intfloat/multilingual-e5-base | 통화 받아쓰기 · RAG 유사 사례 검색 | MIT |
-| 모델 | klue/bert-base · klue/roberta-large · Systran/faster-whisper-medium | 사기 분류 · STT | CC-BY-SA-4.0 · MIT |
-| 데이터 | 금감원 '바로 이 목소리' (fss.or.kr) · AI Hub KsponSpeech · YouTube | 통화 학습 · 평가 · 모델 데이터 | 금감원 공개자료(출처) · AI Hub · YouTube 이용약관 |
-| 데이터 | meal-bbang/Korean_message · DimensionV/KR-MOB-SMISHING v1 · v2 | 스미싱 모델 학습 · 평가 | 라이선스 미표기 · CC BY-NC 4.0 |
-| 외부 API | OpenAI GPT-5.4 (주 판정) · Anthropic Claude Haiku — 코디세이 AI 게이트웨이 | 문자 · 통화 사기 판정 · 설명 LLM | 각 제공사 약관 |
-| 외부 API | Firebase Cloud Messaging | 보호자 실시간 푸시 알림 | Google Firebase 약관 |
-| 인프라 | NCP GPU 서버 (NVIDIA L4 24GB) · Cloudflare Tunnel · Hugging Face Hub | STT · RAG 추론 · 앱→서버 HTTPS · 모델 다운로드 | 각 서비스 이용약관 |
+| 오픈소스 · SDK | PyTorch 2.11 · Transformers · sentence-transformers · scikit-learn · NumPy · CUDA (cuBLAS · cuDNN) | RAG 검색 서버 · 모델 개발 · GPU 추론 | BSD-3 · Apache-2.0 · NVIDIA CUDA EULA |
+| 오픈소스 | Kotlin · firebase-messaging 26.0.1 · Material Icons · AGP 9.0.1 · JUnit 4.13.2 | 앱 빌드 · FCM 수신 · 아이콘 · 단위 테스트 | Apache-2.0 · EPL-1.0 (JUnit) |
+| 오픈소스 | Remotion 4 · React 18 · FFmpeg · Demucs 4.1 · yt-dlp · librosa | 시연 영상 제작 · 음원 분석 | Remotion Lic. · MIT · LGPL/GPL · Unlicense · ISC |
+| 오픈소스 | PptxGenJS · LibreOffice · Pillow · 폰트 (Black Han Sans · Barlow Condensed · Pretendard · Noto Sans KR) | PPT 제작 · 이미지 · 폰트 | MIT · MPL-2.0 · HPND · SIL OFL 1.1 |
+| 모델 · 데이터 | Systran/faster-whisper-large-v3 · intfloat/multilingual-e5-base (서비스 사용) | 통화 받아쓰기 · RAG 유사 사례 검색 | MIT |
+| 모델 · 데이터 | klue/bert-base · klue/roberta-large · Systran/faster-whisper-medium | 사기 분류 · STT | CC-BY-SA-4.0 · MIT |
+| 모델 · 데이터 | 금감원 '바로 이 목소리' 사기 통화 (fss.or.kr) · AI Hub KsponSpeech · YouTube 크롤링 | 통화 학습 · 평가 · 모델 데이터 (유튜브 크롤링) | 금감원 공개자료 (출처) · AI Hub · YouTube 이용약관 |
+| 모델 · 데이터 | meal-bbang/Korean_message · DimensionV/KR-MOB-SMISHING v1 · v2 (Hugging Face) | 스미싱 모델 학습 · 평가 | 라이선스 미표기 · CC BY-NC 4.0 |
+| 외부 API | OpenAI GPT-5.4 (주 판정) · Anthropic Claude Haiku — 코디세이 AI 게이트웨이 | 문자 · 통화 사기 판정 · 설명 LLM | 상용 API (각 제공사 약관) |
+| 외부 API | Firebase Cloud Messaging (FCM) | 보호자 실시간 푸시 알림 | Google Firebase 약관 |
+| 기타 (인프라) | NCP GPU 서버 (NVIDIA L4 24GB) · Cloudflare Tunnel · Hugging Face Hub | STT · RAG 추론 · 앱→서버 HTTPS · 모델 다운로드 | NCP · Cloudflare · Hugging Face 이용약관 |
+| 기타 (AI 도구) | Grok Bot · Gemini (Google Meet 회의록) · Cursor · Claude Code | 기획 · PPT · 영상 보조 · 회의록 · AI 코딩 보조 | 각 서비스 약관 · 상용 라이선스/구독 |
+| 기타 (미디어) | BGM: SOFI TUKKER 'Best Friend' · Apple 'Meet iPhone' 광고 (youtu.be/rYpWrpjUzI0) | 시연 영상 배경음악 · 모션 참고 · 일부 화면 | 저작권 각 권리자 · 비영리 해커톤 |
+| 기타 (미디어) | YouTube 뉴스 (youtu.be/qP5mKE72RZs) · 요양뉴스 기사 · 이미지 · 한라일보TV 음성 | 보이스피싱 뉴스 인용 · 판정 확인 샘플 | 저작권 원 게시자 · 출처 표기 인용 |
+| 기타 (이미지) | SKT 에이닷 로고 · 앱 화면 · 수정체 황변 비교 · CUD 자료 · 카타나 · 페르소나 사진 | 비교 설명 · 시각 근거 · 디자인 | 에이닷 로고: SKT 상표 · 그 외 출처 미확인 |
 | 사전 보유 코드 | 없음 | — | — |
 
 ---
