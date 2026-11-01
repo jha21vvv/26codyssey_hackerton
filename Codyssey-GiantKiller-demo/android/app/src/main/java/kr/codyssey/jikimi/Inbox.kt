@@ -148,3 +148,33 @@ object Reactions {
         }, 5000)
     }
 }
+
+/**
+ * 부모님 폰 통화 경고 푸시(CALL_WARNING) 보류. BE 는 통화 분석이 끝나면 푸시를 먼저 보내고 업로드 응답을 돌려줘서,
+ * 그대로 띄우면 요약 없는 기본 문구가 먼저 뜨고 요약이 든 응답 경고는 '같은 사건'이라 건너뛰어진다.
+ *  - 업로드 응답을 기다리는 동안 온 CALL_WARNING 은 event_id 만 보류
+ *  - 업로드 처리가 끝나면(성공·실패·시간 초과 모두) 보류한 것을 기본 문구로 띄운다.
+ *    성공이면 응답(요약 포함)이 먼저 떠서 같은 사건은 Reactions.firstTime 이 막고, 실패면 푸시가 안전장치로 뜬다
+ *  - 업로드 중이 아니면 바로 띄운다
+ */
+object CallWarnings {
+    private var uploading = 0
+    private val held = mutableListOf<String>()
+
+    @Synchronized fun begin() { uploading++ }
+
+    /** 업로드 중이면 보류하고 true (event_id 가 없으면 맞춰 볼 수 없어 바로 띄우게 false) */
+    @Synchronized fun hold(eventId: String?): Boolean {
+        if (uploading == 0 || eventId.isNullOrEmpty()) return false
+        held += eventId
+        return true
+    }
+
+    /** 업로드 하나가 끝남 → 더 기다리는 업로드가 없으면 보류한 것을 돌려준다 */
+    @Synchronized fun end(): List<String> {
+        uploading = (uploading - 1).coerceAtLeast(0)
+        if (uploading > 0) return emptyList()
+        return held.toList().also { held.clear() }
+    }
+}
+

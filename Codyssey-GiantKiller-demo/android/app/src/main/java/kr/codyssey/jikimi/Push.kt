@@ -11,6 +11,7 @@ import com.google.firebase.FirebaseApp
 import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import org.json.JSONObject
 
 /**
  * FCM 푸시 (BE PRD-004: 등록 토큰이 아니라 FID 를 `PUT /api/v1/users/me/push-registrations` 로 올린다).
@@ -55,7 +56,13 @@ class JikimiMessagingService : FirebaseMessagingService() {
     /** 앱이 화면에 있을 때 온 푸시 (뒤에 있을 때는 안드로이드가 BE 문구 그대로 알림을 띄운다) */
     override fun onMessageReceived(message: RemoteMessage) {
         val data = message.data
-        if (Prefs.role(this) == "parent") return // 부모님 폰은 가족 확인 결과를 직접 확인해 화면에 띄운다 (Reactions.watch)
+        if (Prefs.role(this) == "parent") {
+            // 부모님 폰: 가족 확인 결과는 직접 확인해 띄운다(Reactions.watch). 통화 분석 경고(CALL_WARNING)만 받아 경고창
+            // (같은 통화를 업로드 응답으로 이미 띄웠으면 Reactions 가 event_id 로 한 번만 띄운다)
+            // 통화 업로드 응답을 기다리는 중이면 보류 → 응답(요약 포함)이 먼저 뜨게 (CallWarnings)
+            if (data["push_type"] == "CALL_WARNING" && !CallWarnings.hold(data["event_id"])) Reactions.call(this, JSONObject(), data["event_id"])
+            return
+        }
         Notifier.child(this, message.notification?.title ?: "부모님 지킴이", message.notification?.body ?: "",
             // 알림 종류 키는 push_type (BE PR #12). message_type 은 FCM 예약 키라 발송 자체가 거부됐다
             data["push_type"].orEmpty(), data["event_id"], data["verification_id"])

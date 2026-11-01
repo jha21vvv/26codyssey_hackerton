@@ -15,6 +15,7 @@ import android.os.PowerManager
 import android.provider.MediaStore
 import android.util.Log
 import java.io.File
+import org.json.JSONObject
 
 /**
  * 부모님 폰에서 뒤에서 계속 도는 서비스. 판단은 모두 백엔드(BE)가 하고, 이 서비스는 보고만 한다.
@@ -158,13 +159,19 @@ class GuardService : Service() {
             return
         }
         Log.i(TAG, "통화 녹음 올리는 중 (${file.length() / 1024}KB) → 서버 분석 기다림 (최대 95초)")
-        val r = try {
-            Api.analyzeCall(this, file)
-        } catch (e: Api.HttpError) {
-            Log.w(TAG, "통화 녹음 분석 실패 ${e.code} ${e.detail}") // 413 AUDIO_TOO_LARGE · 422 EMPTY_AUDIO · 503 AI_NOT_CONFIGURED
-            return
+        CallWarnings.begin() // 응답을 기다리는 동안 온 CALL_WARNING 푸시는 보류
+        try {
+            val r = try {
+                Api.analyzeCall(this, file)
+            } catch (e: Api.HttpError) {
+                Log.w(TAG, "통화 녹음 분석 실패 ${e.code} ${e.detail}") // 413 AUDIO_TOO_LARGE · 422 EMPTY_AUDIO · 503 AI_NOT_CONFIGURED
+                return
+            }
+            Log.i(TAG, "통화 녹음 분석 $name → ${r.optString("analysis_status")} ${r.optString("status")}")
+            r.optJSONObject("result")?.takeIf { it.optBoolean("requires_attention") }?.let { Reactions.call(this, it, r.optString("event_id")) }
+        } finally {
+            // 성공이면 같은 사건은 위에서 떠서 firstTime 이 막고, 실패·시간 초과·예외면 보류한 푸시가 기본 문구로 뜬다
+            CallWarnings.end().forEach { Reactions.call(this, JSONObject(), it) }
         }
-        Log.i(TAG, "통화 녹음 분석 $name → ${r.optString("analysis_status")} ${r.optString("status")}")
-        r.optJSONObject("result")?.takeIf { it.optBoolean("requires_attention") }?.let { Reactions.call(this, it, r.optString("event_id")) }
     }
 }
