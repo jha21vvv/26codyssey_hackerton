@@ -1,4 +1,4 @@
-<div align="center">
+<div align="center"><div align="center">
 
 # 🐱 머꼬 MEOKKO
 
@@ -96,40 +96,48 @@
 
 ## 🏗️ 시스템 구성
 
-> 범례: **[직접]** 직접 개발·구축 · **[외부]** 외부 API·오픈소스
+> **서버는 1대**입니다. NCP L4 GPU 서버 한 대에서 Main Server 프로그램 하나가 API · STT · 사례 검색 · LLM 호출 · 알림을 모두 처리하고, DB는 같은 서버의 Docker에서 돌아갑니다. 외부로 나가는 건 LLM API와 FCM뿐입니다.
 
 ```mermaid
 flowchart LR
-    P((👵 부모님<br/>사용자)) <-->|질문| APP
-    G((👩 보호자<br/>자녀)) <-->|알림| APP
+    P((👵 부모님<br/>사용자))
+    G((👩 보호자<br/>자녀))
 
-    subgraph APP["📱 Android App [직접]"]
-        A1[문자·통화·앱 설치 이벤트 감지<br/>개인정보 1차 마스킹]
-        A2[폰 안 경량 모델로 1차 판정<br/>직접 학습]
-        A3[위험 단계 판정<br/>문자 → 통화 → 앱 설치 단계마다 위험도 판정]
-        A4[가족 확인: 위험 시 FCM 알림 → 가족이 확인]
-        A5[보호자 자녀: 가족 보안 화면 · 위험 알림 수신]
+    subgraph APP["📱 Android App · 직접 개발"]
+        direction TB
+        A1["문자·통화·앱 설치 이벤트 감지<br/>개인정보 1차 마스킹"]
+        A2["폰 안 경량 모델로 1차 판정<br/>(직접 학습)"]
+        A3["위험 단계 판정<br/>문자 → 통화 → 앱 설치"]
+        A4["가족 확인 화면 · 위험 알림 수신"]
+        A1 ~~~ A2 ~~~ A3 ~~~ A4
     end
 
-    APP -->|텍스트 · 음성파일| WAS
-    WAS -->|위험 알림| APP
-
-    subgraph WAS["🖥️ Main Server · WAS [직접] — FastAPI · Uvicorn · Pydantic · Docker Compose · Cloudflare Tunnel"]
-        W1[앱 요청 API · 회원/가족<br/>문자는 폰에서 가린 뒤 전송]
-        W2[서버: STT · 사례 검색 후 LLM 판정]
-        W3[RAG: 유사 사기 사례를 프롬프트에 넣어 LLM 호출]
-        W4[보호자 실시간 위험 알림 발송<br/>Firebase Admin → FCM]
+    subgraph SRV["☁️ NCP L4 GPU 서버 (1대) · Docker Compose · Cloudflare Tunnel"]
+        direction TB
+        subgraph WAS["🖥️ Main Server · WAS — FastAPI 프로그램 하나 · 직접 개발"]
+            direction TB
+            W1["앱 요청 API · 회원/가족<br/>(문자는 폰에서 가린 뒤 전송)"]
+            W2["🎙️ STT — faster-whisper large-v3<br/>CUDA fp16 · 같은 프로그램 안"]
+            W3["📚 RAG 사례 검색 — multilingual-e5-base<br/>금감원 실제 사기 사례 코퍼스"]
+            W4["🧠 LLM 판정 호출<br/>검색 사례 + 입력 → JSON"]
+            W5["🔔 보호자 위험 알림<br/>Firebase Admin → FCM"]
+            W1 ~~~ W2 ~~~ W3 ~~~ W4 ~~~ W5
+        end
+        DB[("🐘 PostgreSQL 18 (Docker)<br/>사용자·가족·초대")]
     end
 
-    WAS <--> DB[("🐘 DB [외부]<br/>PostgreSQL 18 · Docker<br/>사용자·가족·초대 데이터")]
-    WAS <-->|같은 프로그램| STT["🎙️ GPU 서버 안 STT [직접 구축]<br/>faster-whisper large-v3 (CT2, fp16)<br/>CUDA · cuDNN · PyTorch<br/>KLUE BERT·RoBERTa 분류기는 실험 단계"]
-    WAS <-->|임베딩 검색| RAG["📚 RAG 검색 · 사례 코퍼스 [직접 개발]<br/>multilingual-e5-base · sentence-transformers<br/>금감원 실제 사기 사례 → 임베딩 → 유사도 검색"]
-    WAS <-->|프롬프트 판정| LLM["🧠 External LLM API [외부]<br/>OpenAI GPT-5.4 · Claude Haiku<br/>코디세이 AI 게이트웨이 · 검색 사례 + 입력 → JSON 판정"]
+    LLM["🌐 외부 LLM API<br/>OpenAI GPT-5.4 · Claude Haiku<br/>(코디세이 AI 게이트웨이)"]
+
+    P <-->|질문| APP
+    G <-->|알림| APP
+    APP <-->|텍스트 · 음성파일 / 위험 알림| WAS
+    WAS <--> DB
+    WAS <-->|프롬프트 판정| LLM
 ```
 
 **판정 흐름**: ① 폰 1차 판정 → ② 애매하면 서버 → ③ STT · 사례 검색 → ④ LLM 판정 → ⑤ 위험 시 가족에게 FCM 알림 → 가족 확인
 
-> STT는 별도 서버가 아니라 **Main Server와 같은 프로그램 안에서** GPU로 동작합니다. KLUE 분류기는 실험 단계입니다.
+<sub>KLUE BERT · RoBERTa 분류기는 실험 단계입니다.</sub>
 
 ## 🛠️ 기술 스택
 
@@ -375,4 +383,3 @@ AI 판정 코드에서 쓰려면 `.env`의 `CLASSIFIER_DIR`을 압축 푼 `model
 <sub>Made with ☕ by TEAM 자이언트킬러 · Codyssey AI Hackathon 2026</sub>
 
 </div>
-
