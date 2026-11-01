@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 쉬운 설명 알림 -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- 화면을 덮는 경고창 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!-- 뒤에서 계속 돌며 서버 알림 받기 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <!-- 폰을 다시 켜면 지킴이도 다시 시작 -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <!-- 아는 번호인지 확인 (폰 안 필터) -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <!-- 문자 직접 받기 (알림보다 정확: 진짜 번호·전체 내용) -->
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <!-- 통화 녹음 파일 감지 -->
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+    <!-- 통화 녹음을 올리는 동안 CPU 를 깨워 둔다 (화면이 꺼져도 늦지 않게) -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
+    <!-- 새로 설치된 앱 이름 읽기 (해커톤용. 스토어 배포 시 <queries> 로 좁힐 것) -->
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+
+    <application
+        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:theme="@style/Theme.Jikimi"
+        android:usesCleartextTraffic="true">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ParentActivity" android:exported="false" />
+        <activity android:name=".ChildActivity" android:exported="false" android:launchMode="singleTop" />
+
+        <!-- 문자·카톡·앱 알림 읽기 -->
+        <service
+            android:name=".NotiListener"
+            android:exported="true"
+            android:label="@string/listener_label"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
+
+        <!-- 서버 알림 폴링 + 경고창 + 앱 설치·통화 녹음 감지 -->
+        <service
+            android:name=".GuardService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="고령자 사기 알림 보호: 서버 판단 결과를 받아 경고창을 띄움" />
+        </service>
+        <!-- 자녀 폰: BE 푸시(FCM). FID 로 등록한다 (BE README) -->
+        <service android:name=".JikimiMessagingService" android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <meta-data android:name="firebase_messaging_installation_id_enabled" android:value="true" />
+        <meta-data android:name="com.google.firebase.messaging.default_notification_channel_id" android:value="warning" />
+        <receiver android:name=".VerifyReceiver" android:exported="false" />
+        <!-- 문자 직접 받기 -->
+        <receiver
+            android:name=".SmsReceiver"
+            android:exported="true"
+            android:permission="android.permission.BROADCAST_SMS">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".BootReceiver" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

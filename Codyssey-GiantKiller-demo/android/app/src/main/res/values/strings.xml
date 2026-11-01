@@ -1,0 +1,3 @@
+<resources>
+    <!-- app_name · listener_label 은 app/build.gradle.kts 에서 (빌드 설정값 jikimi.appName) -->
+</resources>

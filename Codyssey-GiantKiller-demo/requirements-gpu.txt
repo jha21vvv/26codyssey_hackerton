@@ -1,0 +1,8 @@
+# GPU 서버(gp1l4-g3) 전용: 작은 분류 모델 학습·실행, Whisper 받아쓰기
+#   .venv/bin/pip install -r requirements.txt -r requirements-gpu.txt
+torch>=2.2
+transformers>=4.40
+faster-whisper>=1.0
+av>=15,<17  # av 17+ 는 faster-whisper 1.2 의 decode_audio(metadata_errors) 와 안 맞음
+# 통화 화자 구분 (WHISPER_DIARIZE=1, HF_TOKEN 필요) — ai/diarize.py
+pyannote.audio>=3.1

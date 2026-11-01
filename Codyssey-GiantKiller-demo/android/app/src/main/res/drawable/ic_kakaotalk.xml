@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 머꼬 A안 아이콘: ic_kakaotalk.svg 에서 변환 -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp" android:height="24dp"
+    android:viewportWidth="24" android:viewportHeight="24">
+    <path android:fillColor="#FF111111" android:pathData="M12 3.5c5 0 9 3.1 9 7s-4 7-9 7c-.8 0-1.6-.1-2.4-.3L5 20l1-3.9C4.2 14.8 3 12.8 3 10.5c0-3.9 4-7 9-7z"/>
+</vector>

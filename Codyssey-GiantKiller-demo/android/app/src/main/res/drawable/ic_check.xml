@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 머꼬 A안 아이콘: ic_check.svg 에서 변환 -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp" android:height="24dp"
+    android:viewportWidth="24" android:viewportHeight="24">
+    <path android:fillColor="#FF111111" android:pathData="M9.2 16.6 4.4 11.8l2.1-2.1 2.7 2.7 8.3-8.3 2.1 2.1z"/>
+</vector>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 머꼬 A안 아이콘: ic_hand_stop.svg 에서 변환 -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp" android:height="24dp"
+    android:viewportWidth="24" android:viewportHeight="24">
+    <path android:fillColor="#FF111111" android:pathData="M8 21c-2.2-1.7-3.6-4.3-3.6-7.2V8.6c0-.9.7-1.6 1.6-1.6s1.6.7 1.6 1.6v3.6h.8V4.4c0-.9.7-1.6 1.6-1.6s1.6.7 1.6 1.6v7.2h.8V3.6c0-.9.7-1.6 1.6-1.6s1.6.7 1.6 1.6v8h.8V5.2c0-.9.7-1.6 1.6-1.6s1.6.7 1.6 1.6v8.6c0 4-3 7.2-7 7.2H8z"/>
+</vector>

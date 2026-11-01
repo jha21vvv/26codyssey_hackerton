@@ -1,0 +1,12 @@
+.env
+.venv/
+.venv-*/
+__pycache__/
+*.pyc
+/data/
+uploads/
+.DS_Store
+models/
+
+# Firebase 앱 설정 (API 키 포함, 레포 공개) — 콘솔에서 받아 android/app/ 에 복사만
+android/app/google-services.json

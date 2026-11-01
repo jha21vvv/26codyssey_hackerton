@@ -1,0 +1,55 @@
+{"sender": "02-3456-7890", "content": "[국제택배] 주소지 불일치로 배송이 보류되었습니다. 주소 확인: http://kr-post-check.xyz/a1", "expect": "scam", "type": "delivery"}
+{"sender": "010-4821-7730", "content": "[CJ택배] 고객님 택배가 도로명주소 불일치로 반송 예정입니다. 주소변경 han.gl/aZ3kq", "expect": "scam", "type": "delivery"}
+{"sender": "010-3392-1180", "content": "운송장번호 5512-xxxx 상품이 통관 보류 중입니다. 개인통관부호 입력: bit.ly/3kQx9", "expect": "scam", "type": "delivery"}
+{"sender": "070-8812-3301", "content": "[우체국] 등기우편 2회 미수령으로 반송됩니다. 재배송 신청 www.epost-kr.top", "expect": "scam", "type": "delivery"}
+{"sender": "010-7712-0093", "content": "택배 배송완료 알림 사진 확인 http://photo-check.site/k2", "expect": "scam", "type": "delivery"}
+{"sender": "02-6000-1122", "content": "[서울중앙지검] 귀하의 명의가 금융범죄에 도용되어 사건이 접수되었습니다. 담당 수사관 연락 바랍니다 02-6000-1122", "expect": "scam", "type": "prosecutor"}
+{"sender": "02-312-4400", "content": "[경찰청] 사이버범죄 피의자 출석요구서 발송. 내용 확인 http://police-notice.kr-gov.xyz", "expect": "scam", "type": "prosecutor"}
+{"sender": "1599-0011", "content": "[금융감독원] 고객님 계좌가 불법 대포통장으로 신고되어 지급정지 예정입니다. 해제 문의 1599-0011", "expect": "scam", "type": "prosecutor"}
+{"sender": "010-2290-4471", "content": "고객님 저금리 대환대출 승인되셨습니다. 상담 문의 바랍니다", "expect": "scam", "type": "bank"}
+{"sender": "010-8821-3090", "content": "[OO캐피탈] 정부지원 서민대출 한도 3천만원 승인 대상입니다. 기존 대출 상환 후 진행 가능 상담 010-8821-3090", "expect": "scam", "type": "bank"}
+{"sender": "1644-2201", "content": "고객님은 연 2.9% 햇살론 특별 승인 대상자입니다. 오늘까지 신청 kakao-loan.site/apply", "expect": "scam", "type": "bank"}
+{"sender": "010-5531-0927", "content": "[국민지원금] 미수령 재난지원금 45만원이 있습니다. 오늘 마감 신청: www.gov-support24.info", "expect": "scam", "type": "subsidy"}
+{"sender": "02-1588-0000", "content": "[국세청] 2026년 종합소득세 환급금 382,000원 미수령. 환급 신청 http://hometax-refund.xyz", "expect": "scam", "type": "subsidy"}
+{"sender": "010-3381-2219", "content": "[건강보험공단] 건강검진 결과 통보서가 발송되었습니다. 확인하세요 http://nhis-check.xyz", "expect": "scam", "type": "subsidy"}
+{"sender": "010-6620-1180", "content": "[Web발신] 해외결제 승인 980,000원 본인 아닐 경우 고객센터로 연락 바랍니다 02-6922-1000", "expect": "scam", "type": "bank"}
+{"sender": "02-2210-3349", "content": "[국외발신] 아마존 결제 1,280,000원 정상 승인. 본인 아닐 시 즉시 신고 02-2210-3349", "expect": "scam", "type": "bank"}
+{"sender": "010-9921-0088", "content": "[부고] 故 김OO님께서 별세하셨기에 알려드립니다. 장례식장 안내 http://bugo-notice.me/x1", "expect": "scam", "type": "none"}
+{"sender": "010-1302-7765", "content": "저희 아들 결혼식에 초대합니다. 모바일 청첩장 보기 wedding-card.kr/inv/2281", "expect": "scam", "type": "none"}
+{"sender": "010-4410-2287", "content": "[교통민원24] 신호위반 과태료 고지서 미납. 조회 http://efine-gov.top", "expect": "scam", "type": "none"}
+{"sender": "010-5577-2231", "content": "[카카오] 회원님 계정이 다른 기기에서 로그인되었습니다. 본인 아니면 보안 앱 설치: kakao-safe.apk 다운로드", "expect": "scam", "type": "none"}
+{"sender": "010-7231-6610", "content": "고객님의 휴대폰 요금 미납으로 오늘 이용 정지 예정입니다. 납부 확인 http://pay-telecom.site", "expect": "scam", "type": "none"}
+{"sender": "02-3000-5521", "content": "[OO은행] 보안 등급 하향으로 계좌가 정지됩니다. 보안승급 www.bank-secure.co", "expect": "scam", "type": "bank"}
+{"sender": "010-2002-9981", "content": "안녕하세요 쿠팡 물류센터 고수익 재택 알바 일 30만원 보장 오픈채팅 open.kakao.com/o/sjob", "expect": "scam", "type": "none"}
+{"sender": "010-9876-5432", "content": "엄마 나 폰 액정 깨져서 수리 맡겼어. 이 번호로 문자줘 급하게 부탁할 게 있어", "expect": "child_impersonation", "type": "child"}
+{"sender": "010-3141-5926", "content": "엄마 나 폰 고장났어", "expect": "child_impersonation", "type": "child"}
+{"sender": "010-4433-2211", "content": "엄마 바빠? 휴대폰 고장나서 친구폰으로 문자해. 문화상품권 좀 사줄 수 있어?", "expect": "child_impersonation", "type": "child"}
+{"sender": "010-7788-1100", "content": "아빠 나야 폰 잃어버려서 임시폰이야. 급하게 송금할 데가 있는데 50만원만 보내줄 수 있어?", "expect": "child_impersonation", "type": "child"}
+{"sender": "010-5050-8282", "content": "엄마 나 핸드폰 보험 처리하려는데 엄마 신분증 사진이랑 카드 번호 좀 보내줘", "expect": "child_impersonation", "type": "child"}
+{"sender": "010-6262-1919", "content": "어머님 아드님 친구인데요 민수가 사고나서 급하게 병원비가 필요해요", "expect": "child_impersonation", "type": "child"}
+{"sender": "010-8080-2020", "content": "엄마 나 지금 통화 안 돼. 이 링크로 앱 하나만 깔아줘 http://remote-help.site", "expect": "child_impersonation", "type": "child"}
+{"sender": "010-1212-3434", "content": "엄마 나야 새 번호로 바꿨어 저장해줘~ 그리고 부탁 하나만 해도 돼?", "expect": "child_impersonation", "type": "child"}
+{"sender": "010-9090-1010", "content": "아버지 저 막내예요. 핸드폰이 망가져서 컴퓨터로 문자 보내요. 지금 급한 일이 있어서요", "expect": "child_impersonation", "type": "child"}
+{"sender": "010-4545-6767", "content": "엄마 카톡 확인해줘 급해", "expect": "child_impersonation", "type": "child"}
+{"sender": "1588-1234", "content": "[행복아파트] 10월 관리비 245,300원이 11월 5일 등록하신 계좌에서 자동이체될 예정입니다.", "expect": "need_explain", "type": "none"}
+{"sender": "1544-0010", "content": "[OO카드] 11월 카드대금 382,100원 결제예정일 11/14 출금계좌 잔고를 확인해주세요", "expect": "need_explain", "type": "none"}
+{"sender": "1588-5000", "content": "[Web발신] [넷플릭스] 정기결제 17,000원이 결제되었습니다", "expect": "need_explain", "type": "none"}
+{"sender": "1666-1111", "content": "[OO카드] 승인 김*자 32,500원 일시불 10/30 14:22 OO마트", "expect": "need_explain", "type": "none"}
+{"sender": "1588-2100", "content": "[Web발신] 인증번호 [482913]를 입력해주세요. 타인에게 절대 알려주지 마세요.", "expect": "need_explain", "type": "none"}
+{"sender": "123", "content": "[한국전력] 10월 전기요금 48,210원 청구. 납부기한 11월 25일", "expect": "need_explain", "type": "none"}
+{"sender": "1577-1000", "content": "[OO생명] 보험료 89,000원 자동이체 처리되었습니다", "expect": "need_explain", "type": "none"}
+{"sender": "15881255", "content": "[쿠팡] 주문하신 상품이 배송완료 되었습니다. 문 앞에 두었어요", "expect": "need_explain", "type": "none"}
+{"sender": "1600-1234", "content": "[OO통신] 10월 통신요금 46,300원 청구되었습니다. 자동납부일 11/21", "expect": "need_explain", "type": "none"}
+{"sender": "1588-3333", "content": "[OO은행] 입금 300,000원 잔액 1,203,000원 연금", "expect": "need_explain", "type": "none"}
+{"sender": "02-2072-2114", "content": "[OO병원] 11월 3일 오전 10시 내과 진료 예약이 확인되었습니다. 변경은 02-2072-2114", "expect": "need_explain", "type": "none"}
+{"sender": "1588-8282", "content": "[OO약국] 처방약 조제가 완료되었습니다. 방문해 주세요", "expect": "need_explain", "type": "none"}
+{"sender": "010-1234-5678", "content": "엄마 저녁 먹었어? 이번 주말에 갈게", "expect": "safe", "type": "none"}
+{"sender": "010-1234-5678", "content": "엄마 나 오늘 야근이라 전화 못 해 내일 할게", "expect": "safe", "type": "none"}
+{"sender": "010-2222-3333", "content": "내일 아침 10시에 노래교실 있어요. 늦지 말고 와요~", "expect": "safe", "type": "none"}
+{"sender": "010-5555-6666", "content": "언니 김장 언제 해? 나 그날 갈게", "expect": "safe", "type": "none"}
+{"sender": "010-2222-3333", "content": "오늘 날씨 춥대요 따뜻하게 입고 나와요", "expect": "safe", "type": "none"}
+{"sender": "010-8877-6655", "content": "안녕하세요 302호인데요 택배 잘못 와서 경비실에 맡겨뒀어요", "expect": "safe", "type": "none"}
+{"sender": "1588-0099", "content": "[OO마트] 이번 주 목요일 과일 30% 할인 행사합니다", "expect": "safe", "type": "none"}
+{"sender": "010-3030-4040", "content": "어머니 저 미용실 원장이에요. 다음 주 화요일 2시 예약 괜찮으세요?", "expect": "safe", "type": "none"}
+{"sender": "010-5555-6666", "content": "엄마가 보내준 반찬 잘 먹었어 고마워", "expect": "safe", "type": "none"}
+{"sender": "1577-7777", "content": "[OO구청] 11월 독감 무료 예방접종 안내. 가까운 보건소를 방문해 주세요", "expect": "safe", "type": "none"}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- [yellow] 참고 시안: 노랑 윗띠, 흰 바탕, 검정 주요 버튼. 상태바(시계 줄)는 흰색 그대로 -->
+    <style name="Theme.Jikimi" parent="@android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:colorPrimary">#FFD400</item>
+        <item name="android:colorAccent">#1C1C1E</item>
+        <item name="android:statusBarColor">@android:color/white</item>
+        <item name="android:navigationBarColor">@android:color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+    </style>
+</resources>

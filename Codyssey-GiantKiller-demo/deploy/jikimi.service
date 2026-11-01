@@ -1,0 +1,17 @@
+# 서버가 재부팅돼도 자동으로 켜지게 (선택)
+#   sudo cp deploy/jikimi.service /etc/systemd/system/
+#   sudo systemctl daemon-reload && sudo systemctl enable --now jikimi
+#   journalctl -u jikimi -f        # 로그 보기
+[Unit]
+Description=부모님 지킴이 AI 서버
+After=network.target
+
+[Service]
+User=ncloud
+WorkingDirectory=/home/ncloud/timproject
+ExecStart=/bin/bash deploy/run.sh
+Restart=always
+Environment=PORT=8100
+
+[Install]
+WantedBy=multi-user.target
